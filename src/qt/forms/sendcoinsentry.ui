@@ -451,8 +451,9 @@
        <property name="font">
         <font>
          <family>Typola</family>
-         <weight>50</weight>
-         <bold>false</bold>
+         <pointsize>11</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
          <stylestrategy>PreferAntialias</stylestrategy>
         </font>
        </property>
@@ -460,7 +461,7 @@
         <string>Enter a label for this address to add it to your address book</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">QLabel { font: 9pt &quot;Typola&quot;; }
+        <string notr="true">QLabel { font: 11pt &quot;Typola&quot;; }
 QLabel { font-weight: 900; }</string>
        </property>
       </widget>
@@ -891,7 +892,6 @@ QLabel { font-weight: 900; }</string>
        <weight>99</weight>
        <italic>false</italic>
        <bold>true</bold>
-       <stylestrategy>PreferAntialias</stylestrategy>
       </font>
      </property>
      <property name="styleSheet">
@@ -1333,7 +1333,6 @@ QLabel { font-weight: 900; }</string>
        <weight>99</weight>
        <italic>false</italic>
        <bold>true</bold>
-       <stylestrategy>PreferAntialias</stylestrategy>
       </font>
      </property>
      <property name="styleSheet">
@@ -1775,7 +1774,6 @@ QLabel { font-weight: 900; }</string>
        <weight>99</weight>
        <italic>false</italic>
        <bold>true</bold>
-       <stylestrategy>PreferAntialias</stylestrategy>
       </font>
      </property>
      <property name="styleSheet">
@@ -2218,8 +2216,9 @@ QLabel { font-weight: 900; }</string>
        <property name="font">
         <font>
          <family>Typola</family>
-         <weight>50</weight>
-         <bold>false</bold>
+         <pointsize>11</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
          <stylestrategy>PreferAntialias</stylestrategy>
         </font>
        </property>
@@ -2227,7 +2226,7 @@ QLabel { font-weight: 900; }</string>
         <string>The EGC address to send the payment to  (e.g. EdFwYw4Mo2Zq6CFM2yNJgXvE2DTJxgdBRX)</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">QLabel { font: 9pt &quot;Typola&quot;; }
+        <string notr="true">QLabel { font: 11pt &quot;Typola&quot;; }
 QLabel { font-weight: 900; }</string>
        </property>
        <property name="maxLength">
@@ -3986,19 +3985,20 @@ QLabel { font-weight: 900; }</string>
      <property name="font">
       <font>
        <family>Typola</family>
-       <weight>50</weight>
-       <bold>false</bold>
+       <pointsize>11</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
        <stylestrategy>PreferAntialias</stylestrategy>
       </font>
      </property>
      <property name="toolTip">
-      <string>The amount of EGC to send</string>
+      <string>The amount of EverGreenCoin to send</string>
      </property>
      <property name="autoFillBackground">
       <bool>false</bool>
      </property>
      <property name="styleSheet">
-      <string notr="true">QLabel { font: 9pt &quot;Typola&quot;; }
+      <string notr="true">QLabel { font: 11pt &quot;Typola&quot;; }
 QLabel { font-weight: 900; }</string>
      </property>
     </widget>

@@ -45,7 +45,7 @@ QString BitcoinUnits::description(int unit)
 {
     switch(unit)
     {
-    case BTC: return QString("EverGreenCoin unit");
+    case BTC: return QString("Whole EverGreenCoin unit");
     case mBTC: return QString("Milli-EverGreenCoin unit (1 / 1,000)");
     case uBTC: return QString("Micro-EverGreenCoin unit (1 / 1,000,000)");
     default: return QString("???");

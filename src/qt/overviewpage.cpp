@@ -14,7 +14,7 @@
 #include <QPainter>
 
 #define DECORATION_SIZE 64
-#define NUM_ITEMS 7
+#define NUM_ITEMS 6
 
 class TxViewDelegate : public QAbstractItemDelegate
 {
@@ -72,11 +72,11 @@ public:
         {
             amountText = QString("[") + amountText + QString("]");
         }
+        painter->setPen(QColor(1,132,87));
         painter->drawText(amountRect, Qt::AlignRight|Qt::AlignVCenter, amountText);
 
         painter->setPen(option.palette.color(QPalette::Text));
         painter->drawText(amountRect, Qt::AlignLeft|Qt::AlignVCenter, GUIUtil::dateTimeStr(date));
-
         painter->restore();
     }
 
