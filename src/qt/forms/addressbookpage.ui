@@ -26,12 +26,15 @@
       </font>
      </property>
      <property name="text">
-      <string>These are your EverGreenCoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of how you received each transaction.                            </string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;These are your EverGreenCoin addresses for receiving. You may want to give a different one to each sender so you can keep track of how you received each transaction. You can visit &lt;a href=&quot;https://EverGreenCoin.org/faucet/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#266c3f;&quot;&gt;https://EverGreenCoin.org/faucet/&lt;/span&gt;&lt;/a&gt; to gain familiarity with receiving EverGreenCoin.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="textFormat">
-      <enum>Qt::PlainText</enum>
+      <enum>Qt::RichText</enum>
      </property>
      <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+     <property name="openExternalLinks">
       <bool>true</bool>
      </property>
     </widget>
@@ -188,6 +191,10 @@
        </property>
        <property name="text">
         <string>&amp;Stake For Charity</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>:/icons/charity</normaloff>:/icons/charity</iconset>
        </property>
       </widget>
      </item>

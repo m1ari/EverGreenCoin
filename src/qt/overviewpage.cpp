@@ -12,9 +12,10 @@
 
 #include <QAbstractItemDelegate>
 #include <QPainter>
+#include <QFontDatabase>
 
-#define DECORATION_SIZE 64
-#define NUM_ITEMS 6
+#define DECORATION_SIZE 52
+#define NUM_ITEMS 7
 
 class TxViewDelegate : public QAbstractItemDelegate
 {
@@ -29,6 +30,14 @@ public:
                       const QModelIndex &index ) const
     {
         painter->save();
+
+        QFontDatabase::addApplicationFont(":/TRUE TYPOLA.ttf");
+        painter->setFont(QFont("Typola"));
+        //painter->setRenderHint(0x01,true);
+        //QPainter::HighQualityAntialiasing;
+        //QPainter::SmoothPixmapTransform;
+        QPainter::TextAntialiasing;
+        QPainter::Qt4CompatiblePainting;
 
         QIcon icon = qvariant_cast<QIcon>(index.data(Qt::DecorationRole));
         QRect mainRect = option.rect;
@@ -102,11 +111,11 @@ OverviewPage::OverviewPage(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QAction *stakeForCharityAction = new QAction(ui->startButton->text(), this);
+    // QAction *stakeForCharityAction = new QAction(ui->startButton->text(), this);
 
     // contextMenu = new QMenu();
     // contextMenu->addAction(stakeForCharityAction);
-    connect(stakeForCharityAction, SIGNAL(triggered()), this, SLOT(on_startButton_clicked()));
+    // connect(stakeForCharityAction, SIGNAL(triggered()), this, SLOT(on_startButton_clicked()));
 
     // Recent transactions
     ui->listTransactions->setItemDelegate(txdelegate);

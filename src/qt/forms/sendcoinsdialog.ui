@@ -990,9 +990,9 @@
             <colorrole role="Text">
              <brush brushstyle="SolidPattern">
               <color alpha="255">
-               <red>0</red>
-               <green>0</green>
-               <blue>0</blue>
+               <red>1</red>
+               <green>132</green>
+               <blue>87</blue>
               </color>
              </brush>
             </colorrole>
@@ -1127,9 +1127,9 @@
             <colorrole role="Text">
              <brush brushstyle="SolidPattern">
               <color alpha="255">
-               <red>0</red>
-               <green>0</green>
-               <blue>0</blue>
+               <red>1</red>
+               <green>132</green>
+               <blue>87</blue>
               </color>
              </brush>
             </colorrole>
@@ -1348,7 +1348,7 @@
          <property name="font">
           <font>
            <family>Typola</family>
-           <pointsize>11</pointsize>
+           <pointsize>13</pointsize>
            <weight>75</weight>
            <bold>true</bold>
            <stylestrategy>PreferAntialias</stylestrategy>
@@ -1427,9 +1427,9 @@
             <colorrole role="Text">
              <brush brushstyle="SolidPattern">
               <color alpha="255">
-               <red>0</red>
-               <green>0</green>
-               <blue>0</blue>
+               <red>1</red>
+               <green>132</green>
+               <blue>87</blue>
               </color>
              </brush>
             </colorrole>
@@ -1564,9 +1564,9 @@
             <colorrole role="Text">
              <brush brushstyle="SolidPattern">
               <color alpha="255">
-               <red>0</red>
-               <green>0</green>
-               <blue>0</blue>
+               <red>1</red>
+               <green>132</green>
+               <blue>87</blue>
               </color>
              </brush>
             </colorrole>
@@ -1785,7 +1785,7 @@
          <property name="font">
           <font>
            <family>Typola</family>
-           <pointsize>11</pointsize>
+           <pointsize>13</pointsize>
            <weight>75</weight>
            <bold>true</bold>
            <stylestrategy>PreferAntialias</stylestrategy>

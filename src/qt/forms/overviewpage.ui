@@ -24,6 +24,7 @@
        <property name="font">
         <font>
          <stylestrategy>PreferAntialias</stylestrategy>
+         <kerning>false</kerning>
         </font>
        </property>
        <property name="frameShape">
@@ -465,7 +466,7 @@
               <weight>99</weight>
               <italic>false</italic>
               <bold>true</bold>
-              <stylestrategy>PreferAntialias</stylestrategy>
+              <kerning>false</kerning>
              </font>
             </property>
             <property name="styleSheet">
@@ -487,7 +488,7 @@ QLabel { font-weight: 900; }</string>
               <weight>99</weight>
               <italic>false</italic>
               <bold>true</bold>
-              <stylestrategy>PreferAntialias</stylestrategy>
+              <kerning>false</kerning>
              </font>
             </property>
             <property name="toolTip">
@@ -511,6 +512,7 @@ QLabel { font-weight: 900; }</string>
             <property name="font">
              <font>
               <stylestrategy>PreferAntialias</stylestrategy>
+              <kerning>false</kerning>
              </font>
             </property>
             <property name="orientation">
@@ -967,7 +969,7 @@ QLabel { font-weight: 900; }</string>
               <weight>99</weight>
               <italic>false</italic>
               <bold>true</bold>
-              <stylestrategy>PreferAntialias</stylestrategy>
+              <kerning>false</kerning>
              </font>
             </property>
             <property name="styleSheet">
@@ -1004,7 +1006,7 @@ QLabel { font-weight: 900; }</string>
               <weight>99</weight>
               <italic>false</italic>
               <bold>true</bold>
-              <stylestrategy>PreferAntialias</stylestrategy>
+              <kerning>false</kerning>
              </font>
             </property>
             <property name="cursor">
@@ -1044,7 +1046,7 @@ QLabel { font-weight: 900; }</string>
               <weight>99</weight>
               <italic>false</italic>
               <bold>true</bold>
-              <stylestrategy>PreferAntialias</stylestrategy>
+              <kerning>false</kerning>
              </font>
             </property>
             <property name="styleSheet">
@@ -1075,7 +1077,7 @@ QLabel { font-weight: 900; }</string>
               <weight>99</weight>
               <italic>false</italic>
               <bold>true</bold>
-              <stylestrategy>PreferAntialias</stylestrategy>
+              <kerning>false</kerning>
              </font>
             </property>
             <property name="cursor">
@@ -1115,7 +1117,7 @@ QLabel { font-weight: 900; }</string>
               <weight>99</weight>
               <italic>false</italic>
               <bold>true</bold>
-              <stylestrategy>PreferAntialias</stylestrategy>
+              <kerning>false</kerning>
              </font>
             </property>
             <property name="styleSheet">
@@ -1146,7 +1148,7 @@ QLabel { font-weight: 900; }</string>
               <weight>99</weight>
               <italic>false</italic>
               <bold>true</bold>
-              <stylestrategy>PreferAntialias</stylestrategy>
+              <kerning>false</kerning>
              </font>
             </property>
             <property name="cursor">
@@ -1186,7 +1188,7 @@ QLabel { font-weight: 900; }</string>
               <weight>99</weight>
               <italic>false</italic>
               <bold>true</bold>
-              <stylestrategy>PreferAntialias</stylestrategy>
+              <kerning>false</kerning>
              </font>
             </property>
             <property name="styleSheet">
@@ -1217,7 +1219,7 @@ QLabel { font-weight: 900; }</string>
               <weight>99</weight>
               <italic>false</italic>
               <bold>true</bold>
-              <stylestrategy>PreferAntialias</stylestrategy>
+              <kerning>false</kerning>
              </font>
             </property>
             <property name="toolTip">
@@ -1665,6 +1667,7 @@ QLabel { font-weight: 900; }</string>
             <property name="font">
              <font>
               <stylestrategy>PreferAntialias</stylestrategy>
+              <kerning>false</kerning>
              </font>
             </property>
             <property name="styleSheet">
@@ -1699,7 +1702,7 @@ QLabel { font-weight: 900; }</string>
               <weight>99</weight>
               <italic>false</italic>
               <bold>true</bold>
-              <stylestrategy>PreferAntialias</stylestrategy>
+              <kerning>false</kerning>
              </font>
             </property>
             <property name="styleSheet">
@@ -1730,7 +1733,7 @@ QLabel { font-weight: 900; }</string>
               <weight>99</weight>
               <italic>false</italic>
               <bold>true</bold>
-              <stylestrategy>PreferAntialias</stylestrategy>
+              <kerning>false</kerning>
              </font>
             </property>
             <property name="cursor">
@@ -1765,6 +1768,7 @@ QLabel { font-weight: 900; }</string>
        <property name="font">
         <font>
          <stylestrategy>PreferAntialias</stylestrategy>
+         <kerning>false</kerning>
         </font>
        </property>
        <property name="orientation">
@@ -1783,6 +1787,7 @@ QLabel { font-weight: 900; }</string>
        <property name="font">
         <font>
          <stylestrategy>PreferAntialias</stylestrategy>
+         <kerning>false</kerning>
         </font>
        </property>
        <property name="text">
@@ -1801,6 +1806,7 @@ QLabel { font-weight: 900; }</string>
        <property name="font">
         <font>
          <stylestrategy>PreferAntialias</stylestrategy>
+         <kerning>false</kerning>
         </font>
        </property>
        <property name="orientation">
@@ -1823,6 +1829,7 @@ QLabel { font-weight: 900; }</string>
        <property name="font">
         <font>
          <stylestrategy>PreferAntialias</stylestrategy>
+         <kerning>false</kerning>
         </font>
        </property>
        <property name="frameShape">
@@ -1847,6 +1854,7 @@ QLabel { font-weight: 900; }</string>
               <family>Typola</family>
               <pointsize>12</pointsize>
               <stylestrategy>PreferAntialias</stylestrategy>
+              <kerning>false</kerning>
              </font>
             </property>
             <property name="text">
@@ -1863,7 +1871,7 @@ QLabel { font-weight: 900; }</string>
               <weight>99</weight>
               <italic>false</italic>
               <bold>true</bold>
-              <stylestrategy>PreferAntialias</stylestrategy>
+              <kerning>false</kerning>
              </font>
             </property>
             <property name="toolTip">
@@ -1887,6 +1895,7 @@ QLabel { font-weight: 900; }</string>
             <property name="font">
              <font>
               <stylestrategy>PreferAntialias</stylestrategy>
+              <kerning>false</kerning>
              </font>
             </property>
             <property name="orientation">
@@ -1907,6 +1916,7 @@ QLabel { font-weight: 900; }</string>
           <property name="font">
            <font>
             <stylestrategy>PreferAntialias</stylestrategy>
+            <kerning>false</kerning>
            </font>
           </property>
           <property name="styleSheet">
@@ -1940,6 +1950,7 @@ QLabel { font-weight: 900; }</string>
        <property name="font">
         <font>
          <stylestrategy>PreferAntialias</stylestrategy>
+         <kerning>false</kerning>
         </font>
        </property>
        <property name="title">
@@ -1962,7 +1973,7 @@ QLabel { font-weight: 900; }</string>
         </property>
         <property name="minimumSize">
          <size>
-          <width>300</width>
+          <width>250</width>
           <height>40</height>
          </size>
         </property>
@@ -1979,6 +1990,7 @@ QLabel { font-weight: 900; }</string>
           <weight>75</weight>
           <bold>true</bold>
           <stylestrategy>PreferAntialias</stylestrategy>
+          <kerning>false</kerning>
          </font>
         </property>
         <property name="toolTip">
@@ -2012,13 +2024,13 @@ QLabel { font-weight: 900; }</string>
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>150</width>
+          <width>200</width>
           <height>40</height>
          </rect>
         </property>
         <property name="minimumSize">
          <size>
-          <width>150</width>
+          <width>200</width>
           <height>40</height>
          </size>
         </property>
@@ -2029,6 +2041,7 @@ QLabel { font-weight: 900; }</string>
           <weight>75</weight>
           <bold>true</bold>
           <stylestrategy>PreferAntialias</stylestrategy>
+          <kerning>false</kerning>
          </font>
         </property>
         <property name="styleSheet">
@@ -2037,6 +2050,16 @@ QLabel { font-weight: 900; }</string>
         </property>
         <property name="text">
          <string>Stake for charity</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../bitcoin.qrc">
+          <normaloff>:/icons/charity</normaloff>:/icons/charity</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>24</width>
+          <height>24</height>
+         </size>
         </property>
        </widget>
       </widget>

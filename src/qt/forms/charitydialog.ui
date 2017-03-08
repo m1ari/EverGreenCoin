@@ -58,7 +58,7 @@
         <x>0</x>
         <y>0</y>
         <width>636</width>
-        <height>465</height>
+        <height>484</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_3">
@@ -337,12 +337,15 @@
              <number>1</number>
             </property>
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span&gt;EverGreenCoin Stake For Charity allows you to automatically send up to 100% of your stake rewards to another EverGreenCoin address after it matures. Note that you pay the tansaction fee&lt;br /&gt;(.0001 EGC) in addition to the percentage. Visit https://EverGreenCoin.org for a list of charities.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;Please enter the percentage to give and the EverGreenCoin address to give to. Min and Max amount and change address are optional.&lt;/span&gt;&lt;/p&gt;&lt;br /&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span&gt;EverGreenCoin Stake For Charity allows you to automatically send up to 100% of your stake rewards to another EverGreenCoin address after it matures. Note that you pay the tansaction fee&lt;br /&gt;(.0001 EGC) in addition to the percentage. Visit &lt;a href=&quot;https://EverGreenCoin.org/charities/&quot; style=&quot;color: #266C3F;&quot;&gt;https://EverGreenCoin.org/charities/&lt;/a&gt; for a list of charities.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;Please enter the percentage to give and the EverGreenCoin address to give to. Min and Max amount and change address are optional.&lt;/span&gt;&lt;/p&gt;&lt;br /&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
             </property>
             <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+            <property name="openExternalLinks">
              <bool>true</bool>
             </property>
            </widget>
@@ -507,7 +510,11 @@
              <string notr="true">background:transparent;</string>
             </property>
             <property name="text">
-             <string/>
+             <string> 
+ 
+ 
+ 
+</string>
             </property>
            </widget>
           </item>

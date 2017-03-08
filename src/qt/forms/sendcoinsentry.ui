@@ -3558,7 +3558,7 @@ QLabel { font-weight: 900; }</string>
      <property name="minimumSize">
       <size>
        <width>0</width>
-       <height>38</height>
+       <height>0</height>
       </size>
      </property>
      <property name="baseSize">
@@ -3992,7 +3992,7 @@ QLabel { font-weight: 900; }</string>
       </font>
      </property>
      <property name="toolTip">
-      <string>The amount of EverGreenCoin to send</string>
+        <string>Amount to send</string>
      </property>
      <property name="autoFillBackground">
       <bool>false</bool>

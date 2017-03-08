@@ -89,7 +89,6 @@
            <weight>99</weight>
            <italic>false</italic>
            <bold>true</bold>
-           <stylestrategy>PreferAntialias</stylestrategy>
           </font>
          </property>
          <property name="styleSheet">
@@ -111,7 +110,6 @@ QLabel { font-weight: 900; }</string>
            <weight>99</weight>
            <italic>false</italic>
            <bold>true</bold>
-           <stylestrategy>PreferAntialias</stylestrategy>
           </font>
          </property>
          <property name="styleSheet">
@@ -133,7 +131,6 @@ QLabel { font-weight: 900; }</string>
            <weight>99</weight>
            <italic>false</italic>
            <bold>true</bold>
-           <stylestrategy>PreferAntialias</stylestrategy>
           </font>
          </property>
          <property name="styleSheet">
@@ -155,7 +152,6 @@ QLabel { font-weight: 900; }</string>
            <weight>99</weight>
            <italic>false</italic>
            <bold>true</bold>
-           <stylestrategy>PreferAntialias</stylestrategy>
           </font>
          </property>
          <property name="styleSheet">
@@ -177,7 +173,6 @@ QLabel { font-weight: 900; }</string>
            <weight>99</weight>
            <italic>false</italic>
            <bold>true</bold>
-           <stylestrategy>PreferAntialias</stylestrategy>
           </font>
          </property>
          <property name="styleSheet">
@@ -199,7 +194,6 @@ QLabel { font-weight: 900; }</string>
            <weight>99</weight>
            <italic>false</italic>
            <bold>true</bold>
-           <stylestrategy>PreferAntialias</stylestrategy>
           </font>
          </property>
          <property name="styleSheet">
@@ -221,7 +215,6 @@ QLabel { font-weight: 900; }</string>
            <weight>99</weight>
            <italic>false</italic>
            <bold>true</bold>
-           <stylestrategy>PreferAntialias</stylestrategy>
           </font>
          </property>
          <property name="styleSheet">
@@ -243,7 +236,6 @@ QLabel { font-weight: 900; }</string>
            <weight>99</weight>
            <italic>false</italic>
            <bold>true</bold>
-           <stylestrategy>PreferAntialias</stylestrategy>
           </font>
          </property>
          <property name="cursor">
@@ -277,7 +269,6 @@ QLabel { font-weight: 900; }</string>
            <weight>99</weight>
            <italic>false</italic>
            <bold>true</bold>
-           <stylestrategy>PreferAntialias</stylestrategy>
           </font>
          </property>
          <property name="styleSheet">
@@ -299,7 +290,6 @@ QLabel { font-weight: 900; }</string>
            <weight>99</weight>
            <italic>false</italic>
            <bold>true</bold>
-           <stylestrategy>PreferAntialias</stylestrategy>
           </font>
          </property>
          <property name="styleSheet">
@@ -321,7 +311,6 @@ QLabel { font-weight: 900; }</string>
            <weight>99</weight>
            <italic>false</italic>
            <bold>true</bold>
-           <stylestrategy>PreferAntialias</stylestrategy>
           </font>
          </property>
          <property name="styleSheet">
@@ -349,7 +338,6 @@ QLabel { font-weight: 900; }</string>
            <weight>99</weight>
            <italic>false</italic>
            <bold>true</bold>
-           <stylestrategy>PreferAntialias</stylestrategy>
           </font>
          </property>
          <property name="styleSheet">
@@ -371,7 +359,6 @@ QLabel { font-weight: 900; }</string>
            <weight>99</weight>
            <italic>false</italic>
            <bold>true</bold>
-           <stylestrategy>PreferAntialias</stylestrategy>
           </font>
          </property>
          <property name="styleSheet">
@@ -396,7 +383,6 @@ QLabel { font-weight: 900; }</string>
            <weight>99</weight>
            <italic>false</italic>
            <bold>true</bold>
-           <stylestrategy>PreferAntialias</stylestrategy>
           </font>
          </property>
          <property name="styleSheet">
@@ -421,7 +407,6 @@ QLabel { font-weight: 900; }</string>
            <weight>99</weight>
            <italic>false</italic>
            <bold>true</bold>
-           <stylestrategy>PreferAntialias</stylestrategy>
           </font>
          </property>
          <property name="styleSheet">
@@ -443,7 +428,6 @@ QLabel { font-weight: 900; }</string>
            <weight>99</weight>
            <italic>false</italic>
            <bold>true</bold>
-           <stylestrategy>PreferAntialias</stylestrategy>
           </font>
          </property>
          <property name="styleSheet">
@@ -465,7 +449,6 @@ QLabel { font-weight: 900; }</string>
            <weight>99</weight>
            <italic>false</italic>
            <bold>true</bold>
-           <stylestrategy>PreferAntialias</stylestrategy>
           </font>
          </property>
          <property name="styleSheet">
@@ -502,7 +485,6 @@ QLabel { font-weight: 900; }</string>
            <weight>99</weight>
            <italic>false</italic>
            <bold>true</bold>
-           <stylestrategy>PreferAntialias</stylestrategy>
           </font>
          </property>
          <property name="styleSheet">
@@ -1464,7 +1446,6 @@ QLabel { font-weight: 900; }</string>
            <weight>99</weight>
            <italic>false</italic>
            <bold>true</bold>
-           <stylestrategy>PreferAntialias</stylestrategy>
           </font>
          </property>
          <property name="styleSheet">
@@ -1486,7 +1467,6 @@ QLabel { font-weight: 900; }</string>
            <weight>99</weight>
            <italic>false</italic>
            <bold>true</bold>
-           <stylestrategy>PreferAntialias</stylestrategy>
           </font>
          </property>
          <property name="styleSheet">
@@ -1508,7 +1488,6 @@ QLabel { font-weight: 900; }</string>
            <weight>99</weight>
            <italic>false</italic>
            <bold>true</bold>
-           <stylestrategy>PreferAntialias</stylestrategy>
           </font>
          </property>
          <property name="styleSheet">
@@ -1530,7 +1509,6 @@ QLabel { font-weight: 900; }</string>
            <weight>99</weight>
            <italic>false</italic>
            <bold>true</bold>
-           <stylestrategy>PreferAntialias</stylestrategy>
           </font>
          </property>
          <property name="styleSheet">
@@ -1555,7 +1533,6 @@ QLabel { font-weight: 900; }</string>
            <weight>99</weight>
            <italic>false</italic>
            <bold>true</bold>
-           <stylestrategy>PreferAntialias</stylestrategy>
           </font>
          </property>
          <property name="styleSheet">
@@ -1577,7 +1554,6 @@ QLabel { font-weight: 900; }</string>
            <weight>99</weight>
            <italic>false</italic>
            <bold>true</bold>
-           <stylestrategy>PreferAntialias</stylestrategy>
           </font>
          </property>
          <property name="styleSheet">
@@ -1620,7 +1596,6 @@ QLabel { font-weight: 900; }</string>
            <weight>99</weight>
            <italic>false</italic>
            <bold>true</bold>
-           <stylestrategy>PreferAntialias</stylestrategy>
           </font>
          </property>
          <property name="styleSheet">
@@ -1630,10 +1605,16 @@ QLabel { font-weight: 900; }</string>
          </property>
          <property name="text">
           <string>For more detailed information,
- please visit http://transactions.EverGreenCoin.org</string>
+ please visit &lt;a href=&quot;https://EverGreenCoin.org/transactions/&quot; style=&quot;color: #266C3F;&quot;&gt;https://EverGreenCoin.org/transactions/&lt;/a&gt;</string>
+         </property>
+         <property name="textFormat">
+          <enum>Qt::RichText</enum>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
+         </property>
+         <property name="openExternalLinks">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -1646,7 +1627,6 @@ QLabel { font-weight: 900; }</string>
            <weight>99</weight>
            <italic>false</italic>
            <bold>true</bold>
-           <stylestrategy>PreferAntialias</stylestrategy>
           </font>
          </property>
          <property name="styleSheet">
@@ -1671,7 +1651,6 @@ QLabel { font-weight: 900; }</string>
            <weight>99</weight>
            <italic>false</italic>
            <bold>true</bold>
-           <stylestrategy>PreferAntialias</stylestrategy>
           </font>
          </property>
          <property name="styleSheet">
