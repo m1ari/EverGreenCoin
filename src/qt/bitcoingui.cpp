@@ -234,8 +234,6 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 
     // Clicking on stake for charity button in the address book sends you to the S4C page
     connect(addressBookPage, SIGNAL(stakeForCharitySignal(QString)), this, SLOT(charityClicked(QString)));
-    // Clicking on stake for charity button in the Overview Page sends you to the S4C page
-    connect(overviewPage, SIGNAL(stakeForCharitySignal()), this, SLOT(charityClicked()));
 
     gotoOverviewPage();
 }
