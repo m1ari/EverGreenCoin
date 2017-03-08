@@ -36,8 +36,8 @@ public:
         //painter->setRenderHint(0x01,true);
         //QPainter::HighQualityAntialiasing;
         //QPainter::SmoothPixmapTransform;
-        QPainter::TextAntialiasing;
-        QPainter::Qt4CompatiblePainting;
+        //QPainter::TextAntialiasing;
+        //QPainter::Qt4CompatiblePainting;
 
         QIcon icon = qvariant_cast<QIcon>(index.data(Qt::DecorationRole));
         QRect mainRect = option.rect;
