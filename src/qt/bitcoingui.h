@@ -123,8 +123,6 @@ private:
     /** Create system tray (notification) icon */
     void createTrayIcon();
 
-//friend class StakeForCharityDialog;
-
 public slots:
     /** Set number of connections shown in the UI */
     void setNumConnections(int count);

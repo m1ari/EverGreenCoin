@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>593</width>
+    <width>650</width>
     <height>470</height>
    </rect>
   </property>
@@ -117,9 +117,16 @@
         <cursorShape>IBeamCursor</cursorShape>
        </property>
        <property name="text">
-        <string>Copyright © 2015-2017 The EverGreenCoin Foundation and Steven Saxton
-For support, please make a ticket at http://support.EverGreenCoin.org
-Please join us at https://EverGreenCoin.org</string>
+        <string>Copyright © 2015-2017 The EverGreenCoin Foundation and Steven Saxton&lt;br /&gt;For support, please make a ticket at &lt;a href=&quot;https://EverGreenCoin.org/support/&quot; style=&quot;color:#266C3F;&quot;&gt;https://EverGreenCoin.org/support/&lt;/a&gt;&lt;br /&gt;Please join us at &lt;a href=&quot;https://EverGreenCoin.org&quot; style=&quot;color:#266C3F;&quot;&gt;https://EverGreenCoin.org&lt;/a&gt;</string>
+       </property>
+       <property name="textFormat">
+        <enum>Qt::RichText</enum>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+       <property name="openExternalLinks">
+        <bool>true</bool>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
