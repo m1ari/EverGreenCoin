@@ -26,7 +26,7 @@
       </font>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;These are your EverGreenCoin addresses for receiving. You may want to give a different one to each sender so you can keep track of how you received each transaction. You can visit &lt;a href=&quot;https://EverGreenCoin.org/faucet/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#266c3f;&quot;&gt;https://EverGreenCoin.org/faucet/&lt;/span&gt;&lt;/a&gt; to gain familiarity with receiving EverGreenCoin.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;These are your EverGreenCoin addresses for receiving. You may want to give a different one to each sender so you can keep track of how you received each transaction. You can visit &lt;a href=&quot;https://EverGreenCoin.org/verify/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#266c3f;&quot;&gt;https://EverGreenCoin.org/verify/&lt;/span&gt;&lt;/a&gt; to gain familiarity with receiving EverGreenCoin.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="textFormat">
       <enum>Qt::RichText</enum>
