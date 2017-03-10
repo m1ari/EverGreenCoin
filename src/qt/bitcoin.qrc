@@ -107,6 +107,6 @@
         <file>res/styles/style.qss</file>
     </qresource>
     <qresource prefix="/">
-        <file>res/TRUE TYPOLA.ttf</file>
+        <file>res/Typola.ttf</file>
     </qresource>
 </RCC>

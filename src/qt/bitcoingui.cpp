@@ -63,6 +63,9 @@
 #include <QStyleFactory>
 #include <QTextStream>
 #include <QTextDocument>
+#include <QFontDatabase>
+#include <QFont>
+#include <QFile>
 
 #include <iostream>
 
@@ -84,8 +87,10 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     notificator(0),
     rpcConsole(0)
 {
-
-
+    QFile res("src/qt/res/Typola.ttf");
+    res.open(QIODevice::ReadOnly);
+    QFontDatabase::addApplicationFontFromData(res.readAll());
+    this->setFont(QFont("Typola", 12, QFont::Bold));
 
     resize(1000, 600);
     setWindowTitle(tr("EverGreenCoin") );
@@ -330,17 +335,17 @@ void BitcoinGUI::createActions()
     optionsAction->setToolTip(tr("Modify configuration options for EverGreenCoin"));
     optionsAction->setMenuRole(QAction::PreferencesRole);
     toggleHideAction = new QAction(QIcon(":/icons/evergreencoin"), tr("&Show / Hide"), this);
-    encryptWalletAction = new QAction(QIcon(":/icons/lock_closed"), tr("&Encrypt Wallet..."), this);
-    encryptWalletAction->setToolTip(tr("Encrypt or decrypt wallet"));
+    encryptWalletAction = new QAction(QIcon(":/icons/lock_closed"), tr("&Encrypt software..."), this);
+    encryptWalletAction->setToolTip(tr("Encrypt software"));
     encryptWalletAction->setCheckable(true);
-    backupWalletAction = new QAction(QIcon(":/icons/filesave"), tr("&Backup Wallet..."), this);
-    backupWalletAction->setToolTip(tr("Backup wallet to another location"));
+    backupWalletAction = new QAction(QIcon(":/icons/filesave"), tr("&Backup your EverGreenCoin..."), this);
+    backupWalletAction->setToolTip(tr("Backup your EverGreenCoin to another location"));
     changePassphraseAction = new QAction(QIcon(":/icons/key"), tr("&Change Passphrase..."), this);
-    changePassphraseAction->setToolTip(tr("Change the passphrase used for wallet encryption"));
-    unlockWalletAction = new QAction(QIcon(":/icons/lock_open"), tr("&Unlock Wallet..."), this);
-    unlockWalletAction->setToolTip(tr("Unlock wallet"));
-    lockWalletAction = new QAction(QIcon(":/icons/lock_closed"), tr("&Lock Wallet"), this);
-    lockWalletAction->setToolTip(tr("Lock wallet"));
+    changePassphraseAction->setToolTip(tr("Change the passphrase used for software encryption"));
+    unlockWalletAction = new QAction(QIcon(":/icons/lock_open"), tr("&Unlock software..."), this);
+    unlockWalletAction->setToolTip(tr("Unlock software"));
+    lockWalletAction = new QAction(QIcon(":/icons/lock_closed"), tr("&Lock software"), this);
+    lockWalletAction->setToolTip(tr("Lock software"));
     signMessageAction = new QAction(QIcon(":/icons/edit"), tr("Sign &message..."), this);
     verifyMessageAction = new QAction(QIcon(":/icons/transaction_0"), tr("&Verify message..."), this);
 
@@ -777,6 +782,7 @@ void BitcoinGUI::gotoOverviewPage()
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
     updateStakingIcon();
 }
+
 void BitcoinGUI::gotoBlockBrowser()
 {
     blockAction->setChecked(true);
@@ -951,10 +957,10 @@ void BitcoinGUI::encryptWallet(bool status)
 void BitcoinGUI::backupWallet()
 {
     QString saveDir = QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation);
-    QString filename = QFileDialog::getSaveFileName(this, tr("Backup Wallet"), saveDir, tr("Wallet Data (*.dat)"));
+    QString filename = QFileDialog::getSaveFileName(this, tr("Backup EverGreenCoin"), saveDir, tr("Wallet Data (*.dat)"));
     if(!filename.isEmpty()) {
         if(!walletModel->backupWallet(filename)) {
-            QMessageBox::warning(this, tr("Backup Failed"), tr("There was an error trying to save the wallet data to the new location."));
+            QMessageBox::warning(this, tr("Backup Failed"), tr("There was an error trying to save the EverGreenCoin data to the new location."));
         }
     }
 }

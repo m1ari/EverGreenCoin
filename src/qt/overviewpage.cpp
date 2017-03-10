@@ -12,7 +12,6 @@
 
 #include <QAbstractItemDelegate>
 #include <QPainter>
-#include <QFontDatabase>
 
 #define DECORATION_SIZE 52
 #define NUM_ITEMS 7
@@ -30,13 +29,11 @@ public:
                       const QModelIndex &index ) const
     {
         painter->save();
-
-        QFontDatabase::addApplicationFont(":/TRUE TYPOLA.ttf");
-        painter->setFont(QFont("Typola"));
-        //painter->setRenderHint(0x01,true);
-        //QPainter::HighQualityAntialiasing;
+        painter->setFont(QFont("Typola", 14, QFont::Bold));
+        painter->setRenderHint(QPainter::Antialiasing);
+        painter->setRenderHint(QPainter::HighQualityAntialiasing);
         //QPainter::SmoothPixmapTransform;
-        //QPainter::TextAntialiasing;
+        painter->setRenderHint(QPainter::TextAntialiasing);
         //QPainter::Qt4CompatiblePainting;
 
         QIcon icon = qvariant_cast<QIcon>(index.data(Qt::DecorationRole));
@@ -207,7 +204,7 @@ void OverviewPage::setModel(WalletModel *model)
         {
             ui->unlockWalletButton->setDisabled(true);
             ui->unlockWalletButton->setText(QString("Not encrypted"));
-
+            ui->unlockWalletButton->setToolTip(QString("Click 'Settings' then 'Encrypt Software' in the menubar to encrypt"));
         }
 
         else
