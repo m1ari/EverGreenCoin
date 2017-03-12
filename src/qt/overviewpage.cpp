@@ -29,17 +29,6 @@ public:
                       const QModelIndex &index ) const
     {
         painter->save();
-        QFont Typola("Typola", 14, QFont::Bold);
-        int psz=Typola.pixelSize();
-        if (psz>0) Typola.setPixelSize(psz*6/5);
-        else Typola.setPixelSize(Typola.pointSizeF()*1.2);
-        painter->setFont(Typola);
-        painter->setRenderHint(QPainter::Antialiasing);
-        painter->setRenderHint(QPainter::HighQualityAntialiasing);
-        //QPainter::SmoothPixmapTransform;
-        painter->setRenderHint(QPainter::TextAntialiasing);
-        //QPainter::Qt4CompatiblePainting;
-
 
         QIcon icon = qvariant_cast<QIcon>(index.data(Qt::DecorationRole));
         QRect mainRect = option.rect;
@@ -209,7 +198,7 @@ void OverviewPage::setModel(WalletModel *model)
         {
             ui->unlockWalletButton->setDisabled(true);
             ui->unlockWalletButton->setText(QString("Not encrypted"));
-            ui->unlockWalletButton->setToolTip(QString("Click 'Settings' then 'Encrypt Software' in the menubar to encrypt"));
+            ui->unlockWalletButton->setToolTip(QString("Click 'Settings' then 'Encrypt Software' in the menu bar to encrypt"));
         }
 
         else

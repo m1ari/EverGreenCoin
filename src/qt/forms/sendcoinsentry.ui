@@ -448,21 +448,8 @@
          </disabled>
         </palette>
        </property>
-       <property name="font">
-        <font>
-         <family>Typola</family>
-         <pointsize>11</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-         <stylestrategy>PreferAntialias</stylestrategy>
-        </font>
-       </property>
        <property name="toolTip">
-        <string>Enter a label for this address to add it to your address book</string>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QLabel { font: 11pt &quot;Typola&quot;; }
-QLabel { font-weight: 900; }</string>
+        <string>Enter a label for this address to add it to your account address book</string>
        </property>
       </widget>
      </item>
@@ -884,19 +871,6 @@ QLabel { font-weight: 900; }</string>
         </colorrole>
        </disabled>
       </palette>
-     </property>
-     <property name="font">
-      <font>
-       <family>Typola</family>
-       <pointsize>14</pointsize>
-       <weight>99</weight>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QLabel { font: 14pt &quot;Typola&quot;; }
-QLabel { font-weight: 900; }</string>
      </property>
      <property name="text">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#266C3F;&quot;&gt;&amp;amp;Label:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -1326,19 +1300,6 @@ QLabel { font-weight: 900; }</string>
        </disabled>
       </palette>
      </property>
-     <property name="font">
-      <font>
-       <family>Typola</family>
-       <pointsize>14</pointsize>
-       <weight>99</weight>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QLabel { font: 14pt &quot;Typola&quot;; }
-QLabel { font-weight: 900; }</string>
-     </property>
      <property name="text">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#266C3F;&quot;&gt;A&amp;amp;mount:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
@@ -1766,19 +1727,6 @@ QLabel { font-weight: 900; }</string>
         </colorrole>
        </disabled>
       </palette>
-     </property>
-     <property name="font">
-      <font>
-       <family>Typola</family>
-       <pointsize>14</pointsize>
-       <weight>99</weight>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QLabel { font: 14pt &quot;Typola&quot;; }
-QLabel { font-weight: 900; }</string>
      </property>
      <property name="text">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#266C3F;&quot;&gt;Pay &amp;amp;To:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -2213,21 +2161,8 @@ QLabel { font-weight: 900; }</string>
          </disabled>
         </palette>
        </property>
-       <property name="font">
-        <font>
-         <family>Typola</family>
-         <pointsize>11</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-         <stylestrategy>PreferAntialias</stylestrategy>
-        </font>
-       </property>
        <property name="toolTip">
         <string>The EGC address to send the payment to  (e.g. EdFwYw4Mo2Zq6CFM2yNJgXvE2DTJxgdBRX)</string>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QLabel { font: 11pt &quot;Typola&quot;; }
-QLabel { font-weight: 900; }</string>
        </property>
        <property name="maxLength">
         <number>34</number>
@@ -2650,14 +2585,6 @@ QLabel { font-weight: 900; }</string>
           </colorrole>
          </disabled>
         </palette>
-       </property>
-       <property name="font">
-        <font>
-         <family>Typola</family>
-         <weight>50</weight>
-         <bold>false</bold>
-         <stylestrategy>PreferAntialias</stylestrategy>
-        </font>
        </property>
        <property name="toolTip">
         <string>Choose address from address book</string>
@@ -3091,14 +3018,6 @@ QLabel { font-weight: 900; }</string>
          </disabled>
         </palette>
        </property>
-       <property name="font">
-        <font>
-         <family>Typola</family>
-         <weight>50</weight>
-         <bold>false</bold>
-         <stylestrategy>PreferAntialias</stylestrategy>
-        </font>
-       </property>
        <property name="toolTip">
         <string>Paste address from clipboard</string>
        </property>
@@ -3530,14 +3449,6 @@ QLabel { font-weight: 900; }</string>
           </colorrole>
          </disabled>
         </palette>
-       </property>
-       <property name="font">
-        <font>
-         <family>Typola</family>
-         <weight>50</weight>
-         <bold>false</bold>
-         <stylestrategy>PreferAntialias</stylestrategy>
-        </font>
        </property>
        <property name="toolTip">
         <string>Remove this recipient</string>
@@ -3982,24 +3893,11 @@ QLabel { font-weight: 900; }</string>
        </disabled>
       </palette>
      </property>
-     <property name="font">
-      <font>
-       <family>Typola</family>
-       <pointsize>11</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-       <stylestrategy>PreferAntialias</stylestrategy>
-      </font>
-     </property>
      <property name="toolTip">
         <string>Amount to send</string>
      </property>
      <property name="autoFillBackground">
       <bool>false</bool>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QLabel { font: 11pt &quot;Typola&quot;; }
-QLabel { font-weight: 900; }</string>
      </property>
     </widget>
    </item>

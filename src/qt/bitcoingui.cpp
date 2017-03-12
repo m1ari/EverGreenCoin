@@ -63,9 +63,6 @@
 #include <QStyleFactory>
 #include <QTextStream>
 #include <QTextDocument>
-#include <QFontDatabase>
-#include <QFont>
-#include <QFile>
 
 #include <iostream>
 
@@ -87,10 +84,6 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     notificator(0),
     rpcConsole(0)
 {
-    QFile res("src/qt/res/Typola.ttf");
-    res.open(QIODevice::ReadOnly);
-    QFontDatabase::addApplicationFontFromData(res.readAll());
-    this->setFont(QFont("Typola", 12, QFont::Bold));
 
     resize(1000, 600);
     setWindowTitle(tr("EverGreenCoin") );

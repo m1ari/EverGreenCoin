@@ -19,14 +19,6 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QTabWidget" name="tabWidget">
-     <property name="font">
-      <font>
-       <family>Typola</family>
-       <weight>75</weight>
-       <bold>true</bold>
-       <stylestrategy>PreferAntialias</stylestrategy>
-      </font>
-     </property>
      <property name="currentIndex">
       <number>0</number>
      </property>
@@ -284,15 +276,8 @@
       <layout class="QVBoxLayout" name="verticalLayout_VM">
        <item>
         <widget class="QLabel" name="infoLabel_VM">
-         <property name="font">
-          <font>
-           <family>Typola</family>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
          <property name="text">
-          <string>Enter the signing address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack.</string>
+          <string>Enter the signing account address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack.</string>
          </property>
          <property name="textFormat">
           <enum>Qt::PlainText</enum>
@@ -313,7 +298,7 @@
          <item>
           <widget class="QValidatedLineEdit" name="addressIn_VM">
            <property name="toolTip">
-            <string>The address the message was signed with (e.g. EdFwYw4Mo2Zq6CFM2yNJgXvE2DTJxgdBRX)</string>
+            <string>The account address the message was signed with (e.g. EdFwYw4Mo2Zq6CFM2yNJgXvE2DTJxgdBRX)</string>
            </property>
            <property name="maxLength">
             <number>34</number>
@@ -352,15 +337,8 @@
         <layout class="QHBoxLayout" name="horizontalLayout_2_VM">
          <item>
           <widget class="QPushButton" name="verifyMessageButton_VM">
-           <property name="font">
-            <font>
-             <family>Typola</family>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
            <property name="toolTip">
-            <string>Verify the message to ensure it was signed with the specified EverGreenCoin address</string>
+            <string>Verify the message to ensure it was signed with the specified EverGreenCoin account address</string>
            </property>
            <property name="text">
             <string>&amp;Verify Message</string>
@@ -376,13 +354,6 @@
          </item>
          <item>
           <widget class="QPushButton" name="clearButton_VM">
-           <property name="font">
-            <font>
-             <family>Typola</family>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
            <property name="toolTip">
             <string>Reset all verify message fields</string>
            </property>

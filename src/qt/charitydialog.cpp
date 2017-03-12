@@ -17,9 +17,9 @@ StakeForCharityDialog::StakeForCharityDialog(QWidget *parent) :
     /* Do not move this to the XML file, Qt before 4.7 will choke on it */
     ui->charityPercentEdit->setPlaceholderText(tr(" % "));
     ui->charityAddressEdit->setPlaceholderText(tr("Enter Charity EverGreenCoin Account Address"));
-    ui->charityMinEdit->setPlaceholderText(tr("Enter Minimum Amount (optional)"));
-    ui->charityMaxEdit->setPlaceholderText(tr("Enter Maximum Amount (optional)"));
-    ui->charityChangeAddressEdit->setPlaceholderText(tr("Enter Change Return EverGreenCoin Account Address (optional)"));
+    ui->charityMinEdit->setPlaceholderText(tr("(optional)"));
+    ui->charityMaxEdit->setPlaceholderText(tr("(optional)"));
+    ui->charityChangeAddressEdit->setPlaceholderText(tr("(optional)"));
 #endif
 
     ui->label_2->setFocus();
