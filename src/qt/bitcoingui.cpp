@@ -250,19 +250,19 @@ void BitcoinGUI::createActions()
     QActionGroup *tabGroup = new QActionGroup(this);
 
     overviewAction = new QAction(QIcon(":/icons/overview"), tr("&Overview"), this);
-    overviewAction->setToolTip(tr("Show general overview of your EverGreenCoin"));
+    overviewAction->setToolTip(tr("Show general overview of your EverGreenCoin balance"));
     overviewAction->setCheckable(true);
     overviewAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_1));
     tabGroup->addAction(overviewAction);
 
     sendCoinsAction = new QAction(QIcon(":/icons/send"), tr("&Send"), this);
-    sendCoinsAction->setToolTip(tr("Send to an EverGreenCoin address"));
+    sendCoinsAction->setToolTip(tr("Send to an EverGreenCoin account address"));
     sendCoinsAction->setCheckable(true);
     sendCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_3));
     tabGroup->addAction(sendCoinsAction);
 
     receiveCoinsAction = new QAction(QIcon(":/icons/receiving_addresses"), tr("&Receive"), this);
-    receiveCoinsAction->setToolTip(tr("Show your list of EverGreenCoin addresses for receiving payments"));
+    receiveCoinsAction->setToolTip(tr("Show your list of EverGreenCoin account addresses for receiving EverGreenCoin"));
     receiveCoinsAction->setCheckable(true);
     receiveCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_2));
     tabGroup->addAction(receiveCoinsAction);
@@ -280,7 +280,7 @@ void BitcoinGUI::createActions()
     tabGroup->addAction(historyAction);
 
     addressBookAction = new QAction(QIcon(":/icons/address-book"), tr("&Addresses"), this);
-    addressBookAction->setToolTip(tr("Edit the list of your stored EverGreenCoin addresses and labels"));
+    addressBookAction->setToolTip(tr("Edit the list of your stored EverGreenCoin account addresses and labels"));
     addressBookAction->setCheckable(true);
     addressBookAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
     tabGroup->addAction(addressBookAction);

@@ -139,8 +139,8 @@
         <string>&amp;Stake For Charity</string>
        </property>
        <property name="icon">
-        <iconset>
-         <normaloff>:/icons/charity</normaloff>:/icons/charity</iconset>
+        <iconset resource="../bitcoin.qrc">
+         <normaloff>:/icons/charity_on</normaloff>:/icons/charity_on</iconset>
        </property>
       </widget>
      </item>

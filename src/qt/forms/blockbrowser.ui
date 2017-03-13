@@ -1197,8 +1197,7 @@
           <string notr="true">color: black;</string>
          </property>
          <property name="text">
-          <string>For more detailed information,
- please visit &lt;a href=&quot;https://EverGreenCoin.org/transactions/&quot; style=&quot;color: #266C3F;&quot;&gt;https://EverGreenCoin.org/transactions/&lt;/a&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;For more detailed information,&lt;br/&gt;please visit &lt;a href=&quot;https://EverGreenCoin.org/accounting/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#266c3f;&quot;&gt;https://EverGreenCoin.org/accounting/&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="textFormat">
           <enum>Qt::RichText</enum>
