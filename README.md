@@ -1,5 +1,5 @@
 
-EverGreenCoin version 1.5.1.0
+EverGreenCoin version 1.6.0.1
 
 Cryptocurrency meets our environment. 
 
