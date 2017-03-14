@@ -61,7 +61,7 @@
         <height>431</height>
        </rect>
       </property>
-      <layout class="QGridLayout" name="gridLayout_3" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" columnstretch="0,0">
+      <layout class="QGridLayout" name="gridLayout_3" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" columnstretch="0,0">
        <property name="sizeConstraint">
         <enum>QLayout::SetMaximumSize</enum>
        </property>
@@ -684,8 +684,8 @@
         <widget class="QPushButton" name="blockButton">
          <property name="minimumSize">
           <size>
-           <width>300</width>
-           <height>0</height>
+           <width>0</width>
+           <height>20</height>
           </size>
          </property>
          <property name="maximumSize">
@@ -1183,6 +1183,12 @@
        </item>
        <item row="12" column="1">
         <widget class="QPushButton" name="txButton">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>20</height>
+          </size>
+         </property>
          <property name="text">
           <string>TX Information</string>
          </property>
@@ -1191,7 +1197,37 @@
          </property>
         </widget>
        </item>
+       <item row="10" column="1">
+        <widget class="QLabel" name="pawBox">
+         <property name="text">
+          <string>0000 KH/s</string>
+         </property>
+        </widget>
+       </item>
+       <item row="17" column="0">
+        <widget class="QLabel" name="inputLabel">
+         <property name="text">
+          <string>Inputs:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+         </property>
+        </widget>
+       </item>
        <item row="19" column="1">
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="18" column="1">
         <widget class="QLabel" name="label">
          <property name="styleSheet">
           <string notr="true">color: black;</string>
@@ -1209,36 +1245,6 @@
           <bool>true</bool>
          </property>
         </widget>
-       </item>
-       <item row="17" column="0">
-        <widget class="QLabel" name="inputLabel">
-         <property name="text">
-          <string>Inputs:</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-         </property>
-        </widget>
-       </item>
-       <item row="10" column="1">
-        <widget class="QLabel" name="pawBox">
-         <property name="text">
-          <string>0000 KH/s</string>
-         </property>
-        </widget>
-       </item>
-       <item row="18" column="1">
-        <spacer name="verticalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
        </item>
       </layout>
      </widget>
