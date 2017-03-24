@@ -169,6 +169,14 @@ void OverviewPage::unlockWallet()
     }
 }
 
+void OverviewPage::unlockButtonUpdate()
+{
+    if(model->getEncryptionStatus() == WalletModel::Locked)
+        ui->unlockWalletButton->setText(QString("Unlock Software"));
+    else
+        ui->unlockWalletButton->setText(QString("Lock Software"));
+}
+
 void OverviewPage::setModel(WalletModel *model)
 {
     this->model = model;

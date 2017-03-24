@@ -976,7 +976,11 @@ void BitcoinGUI::unlockWallet()
               AskPassphraseDialog::UnlockStaking : AskPassphraseDialog::Unlock;
         AskPassphraseDialog dlg(mode, this);
         dlg.setModel(walletModel);
-        dlg.exec();
+        // dlg.exec();
+        if(dlg.exec() == QDialog::Accepted)
+        {
+            BitcoinGUI::overviewPage->unlockButtonUpdate();
+        }
     }
 }
 
@@ -986,6 +990,7 @@ void BitcoinGUI::lockWallet()
         return;
 
     walletModel->setWalletLocked(true);
+    BitcoinGUI::overviewPage->unlockButtonUpdate();
 }
 
 void BitcoinGUI::showNormalIfMinimized(bool fToggleHidden)
