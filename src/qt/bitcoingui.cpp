@@ -976,7 +976,6 @@ void BitcoinGUI::unlockWallet()
               AskPassphraseDialog::UnlockStaking : AskPassphraseDialog::Unlock;
         AskPassphraseDialog dlg(mode, this);
         dlg.setModel(walletModel);
-        // dlg.exec();
         if(dlg.exec() == QDialog::Accepted)
         {
             BitcoinGUI::overviewPage->unlockButtonUpdate();
