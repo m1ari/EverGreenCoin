@@ -94,8 +94,14 @@ void StakeForCharityDialog::on_enableButton_clicked()
 {
     if(model->getEncryptionStatus() == WalletModel::Locked)
     {
-        ui->message->setStyleSheet("QLabel { color: black; font-weight: 900;}");
-        ui->message->setText(tr("Please unlock your software before starting \nEverGreenCoin Stake For Charity.")+ " \n\n");
+        ui->message->setStyleSheet("QLabel { color: red; font-weight: 900;}");
+        ui->message->setText(tr("Please unlock your software\n (unlock for spending, not just staking)\n before starting EverGreenCoin Stake For Charity.")+ " \n\n");
+        return;
+    }
+    else if (fWalletUnlockStakingOnly)
+    {
+        ui->message->setStyleSheet("QLabel { color: red; font-weight: 900;}");
+        ui->message->setText(tr("Please unlock your software for spending\n (it is only unlocked for staking currently)\n before starting EverGreenCoin Stake For Charity.")+ " \n\n");
         return;
     }
 

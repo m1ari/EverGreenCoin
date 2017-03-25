@@ -1052,8 +1052,16 @@ void BitcoinGUI::updateStakingIcon()
         labelStakingIcon->setToolTip(tr("Earning interest<br>Your weight is %1<br>Network weight is %2<br>Estimated time to earn your next interest installment is %3").arg(nWeight).arg(nNetworkWeight).arg(text));
         if (fGlobalStakeForCharity == true)
         {
-            labelCharityIcon->setPixmap(QIcon(":/icons/charity_on").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
-            labelCharityIcon->setToolTip(tr("Thank you for donating your interest installments to charity"));
+            if (!fWalletUnlockStakingOnly)
+            {
+                labelCharityIcon->setPixmap(QIcon(":/icons/charity_on").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
+                labelCharityIcon->setToolTip(tr("Thank you for donating your interest installments to charity"));
+            }
+            else
+            {
+                labelCharityIcon->setPixmap(QIcon(":/icons/charity_off").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
+                labelCharityIcon->setToolTip(tr("Your software is only unlocked for staking only. If must be unlocked for spending to send to send to the charity."));
+            }
         }
         else
         {
