@@ -1,0 +1,13 @@
+/var/lib/evergreencoin/debug.log {
+  weekly
+  rotate 12
+  compress
+  delaycompress
+  missingok
+  notifempty
+  # dateext
+  create 640 evergreencoin evergreencoin
+  postrotate
+    /usr/bin/killall -HUP evergreencoind
+  endscript
+}
