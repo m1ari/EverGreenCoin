@@ -208,6 +208,11 @@ public:
         return Erase(std::make_pair(std::string("s4c2"), strStakeForCharityAddress));
     }
 
+    //#########AGREGADO
+    bool WriteWatchOnly(const CScript &script);
+    bool EraseWatchOnly(const CScript &script);
+    //####FINAGREGADO
+
     bool ReadAccount(const std::string& strAccount, CAccount& account);
     bool WriteAccount(const std::string& strAccount, const CAccount& account);
 private:
@@ -219,6 +224,8 @@ public:
 
     DBErrors ReorderTransactions(CWallet*);
     DBErrors LoadWallet(CWallet* pwallet);
+    DBErrors FindWalletTx(CWallet* pwallet, std::vector<uint256>& vTxHash);
+    DBErrors ZapWalletTx(CWallet* pwallet);
     static bool Recover(CDBEnv& dbenv, std::string filename, bool fOnlyKeys);
     static bool Recover(CDBEnv& dbenv, std::string filename);
 };

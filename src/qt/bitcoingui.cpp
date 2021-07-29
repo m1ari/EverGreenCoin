@@ -53,7 +53,6 @@
 #include <QProgressBar>
 #include <QStackedWidget>
 #include <QDateTime>
-#include <QMovie>
 #include <QFileDialog>
 #include <QDesktopServices>
 #include <QTimer>
@@ -63,6 +62,7 @@
 #include <QStyleFactory>
 #include <QTextStream>
 #include <QTextDocument>
+#include <QDesktopWidget>
 
 #include <iostream>
 
@@ -85,8 +85,14 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     rpcConsole(0)
 {
 
-    resize(1000, 600);
-    setWindowTitle(tr("EverGreenCoin") );
+#if QT_VERSION > 0x050100
+    // Generate high-dpi pixmaps
+    QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+#endif
+
+    resize(1000, 700);
+    this->setGeometry(QStyle::alignedRect(Qt::LeftToRight, Qt::AlignCenter, this->size(), QApplication::desktop()->screenGeometry()));
+    setWindowTitle(tr("EverGreenCoin® Core - Wallet v1.9.1") );
 #ifndef Q_OS_MAC
     qApp->setWindowIcon(QIcon(":icons/evergreencoin"));
     setWindowIcon(QIcon(":icons/evergreencoin"));
@@ -94,6 +100,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     setUnifiedTitleAndToolBarOnMac(true);
     QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
 #endif
+
     // Accept D&D of URIs
     setAcceptDrops(true);
 
@@ -125,31 +132,24 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 #endif
     // Create tabs
     overviewPage = new OverviewPage();
-	statisticsPage = new StatisticsPage(this);
-	blockBrowser = new BlockBrowser(this);
-
+    statisticsPage = new StatisticsPage(this);
+    blockBrowser = new BlockBrowser(this);
     transactionsPage = new QWidget(this);
     QVBoxLayout *vbox = new QVBoxLayout();
     transactionView = new TransactionView(this);
     vbox->addWidget(transactionView);
     transactionsPage->setLayout(vbox);
-
     addressBookPage = new AddressBookPage(AddressBookPage::ForEditing, AddressBookPage::SendingTab);
-
     receiveCoinsPage = new AddressBookPage(AddressBookPage::ForEditing, AddressBookPage::ReceivingTab);
-
     sendCoinsPage = new SendCoinsDialog(this);
-
     signVerifyMessageDialog = new SignVerifyMessageDialog(this);
-
     stakeForCharityDialog = new StakeForCharityDialog(this);
     charityPage = new StakeForCharityDialog(this);
-
     centralWidget = new QStackedWidget(this);
     centralWidget->setObjectName("central");
     centralWidget->addWidget(overviewPage);
-	centralWidget->addWidget(statisticsPage);
-	centralWidget->addWidget(blockBrowser);
+    centralWidget->addWidget(statisticsPage);
+    centralWidget->addWidget(blockBrowser);
     centralWidget->addWidget(transactionsPage);
     centralWidget->addWidget(addressBookPage);
     centralWidget->addWidget(receiveCoinsPage);
@@ -166,6 +166,9 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     frameBlocks->setObjectName("frameBlocks");
     frameBlocks->setContentsMargins(0,0,0,0);
     frameBlocks->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
+    frameBlocks->setFrameStyle(QFrame::NoFrame);
+    //frameBlocks->setFrameStyle(QFrame::StyledPanel);
+    frameBlocks->setFrameShadow(QFrame::Plain);
     QHBoxLayout *frameBlocksLayout = new QHBoxLayout(frameBlocks);
     frameBlocksLayout->setContentsMargins(3,0,3,0);
     frameBlocksLayout->setSpacing(4);
@@ -197,6 +200,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     // Progress bar and label for blocks download
     progressBarLabel = new QLabel();
     progressBarLabel->setVisible(false);
+    progressBarLabel->setStyleSheet("color: #ffffff;");
     progressBar = new QProgressBar();
     progressBar->setAlignment(Qt::AlignCenter);
     progressBar->setVisible(false);
@@ -212,8 +216,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     statusBar()->addWidget(progressBarLabel);
     statusBar()->addWidget(progressBar);
     statusBar()->addPermanentWidget(frameBlocks);
-
-    syncIconMovie = new QMovie(":/movies/update_spinner", "mng", this);
+    statusBar()->setStyleSheet("QStatusBar::item { border: none; };");
 
     // Clicking on a transaction on the overview page simply sends you to transaction history page
     connect(overviewPage, SIGNAL(transactionClicked(QModelIndex)), this, SLOT(gotoHistoryPage()));
@@ -321,24 +324,24 @@ void BitcoinGUI::createActions()
     aboutAction = new QAction(QIcon(":/icons/evergreencoin"), tr("&About EverGreenCoin"), this);
     aboutAction->setToolTip(tr("Show information about EverGreenCoin"));
     aboutAction->setMenuRole(QAction::AboutRole);
-    aboutQtAction = new QAction(QIcon(":/icons/qtlogo.png"), tr("About &Qt"), this);
+    aboutQtAction = new QAction(QIcon(":/icons/qtlogo"), tr("About &Qt"), this);
     aboutQtAction->setToolTip(tr("Show information about Qt"));
     aboutQtAction->setMenuRole(QAction::AboutQtRole);
     optionsAction = new QAction(QIcon(":/icons/options"), tr("&Options..."), this);
-    optionsAction->setToolTip(tr("Modify configuration options for EverGreenCoin"));
+    optionsAction->setToolTip(tr("Modify configuration options for your EverGreenCoin"));
     optionsAction->setMenuRole(QAction::PreferencesRole);
     toggleHideAction = new QAction(QIcon(":/icons/evergreencoin"), tr("&Show / Hide"), this);
-    encryptWalletAction = new QAction(QIcon(":/icons/lock_closed"), tr("&Encrypt software..."), this);
-    encryptWalletAction->setToolTip(tr("Encrypt software"));
+    encryptWalletAction = new QAction(QIcon(":/icons/lock_closed"), tr("&Encrypt your EverGreenCoin..."), this);
+    encryptWalletAction->setToolTip(tr("Encrypt your EverGreenCoin"));
     encryptWalletAction->setCheckable(true);
     backupWalletAction = new QAction(QIcon(":/icons/filesave"), tr("&Backup your EverGreenCoin..."), this);
     backupWalletAction->setToolTip(tr("Backup your EverGreenCoin to another location"));
-    changePassphraseAction = new QAction(QIcon(":/icons/key"), tr("&Change Passphrase..."), this);
-    changePassphraseAction->setToolTip(tr("Change the passphrase used for software encryption"));
-    unlockWalletAction = new QAction(QIcon(":/icons/lock_open"), tr("&Unlock software..."), this);
-    unlockWalletAction->setToolTip(tr("Unlock software"));
-    lockWalletAction = new QAction(QIcon(":/icons/lock_closed"), tr("&Lock software"), this);
-    lockWalletAction->setToolTip(tr("Lock software"));
+    changePassphraseAction = new QAction(QIcon(":/icons/key"), tr("&Change password..."), this);
+    changePassphraseAction->setToolTip(tr("Change the password used for your EverGreenCoin encryption"));
+    unlockWalletAction = new QAction(QIcon(":/icons/lock_open"), tr("&Unlock your EverGreenCoin..."), this);
+    unlockWalletAction->setToolTip(tr("Prompt for password to unlock your EverGreenCoin"));
+    lockWalletAction = new QAction(QIcon(":/icons/lock_closed"), tr("&Lock your EverGreenCoin."), this);
+    lockWalletAction->setToolTip(tr("Lock your EverGreenCoin"));
     signMessageAction = new QAction(QIcon(":/icons/edit"), tr("Sign &message..."), this);
     verifyMessageAction = new QAction(QIcon(":/icons/transaction_0"), tr("&Verify message..."), this);
 
@@ -432,7 +435,7 @@ void BitcoinGUI::setClientModel(ClientModel *clientModel)
 #endif
             if(trayIcon)
             {
-                trayIcon->setToolTip(tr("EverGreenCoin") + QString(" ") + tr("[testnet]"));
+                trayIcon->setToolTip(tr("EverGreenCoin® Core - Wallet v1.8") + QString(" ") + tr("[testnet]"));
                 trayIcon->setIcon(QIcon(":/icons/toolbar_testnet"));
                 toggleHideAction->setIcon(QIcon(":/icons/toolbar_testnet"));
             }
@@ -654,8 +657,7 @@ void BitcoinGUI::setNumBlocks(int count, int nTotalBlocks)
     else
     {
         tooltip = tr("Catching up...") + QString("<br>") + tooltip;
-        labelBlocksIcon->setMovie(syncIconMovie);
-        syncIconMovie->start();
+        labelBlocksIcon->setPixmap(QIcon(":/icons/connect_0").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE)); // EGC STS - Removed sync movie (src/qt/res/movies/update_spinner.mng). Replace with connect_0 icon (red exclamation)
 
         overviewPage->showOutOfSyncWarning(true);
     }
@@ -774,6 +776,7 @@ void BitcoinGUI::gotoOverviewPage()
     exportAction->setEnabled(false);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
     updateStakingIcon();
+    if(overviewPage->isVisible()) overviewPage->updateButton();
 }
 
 void BitcoinGUI::gotoBlockBrowser()
@@ -837,6 +840,17 @@ void BitcoinGUI::gotoSendCoinsPage()
     exportAction->setEnabled(false);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
     updateStakingIcon();
+}
+
+void BitcoinGUI::gotoCharityPage()
+{
+    charityAction->setChecked(true);
+    centralWidget->setCurrentWidget(stakeForCharityDialog);
+
+    exportAction->setEnabled(false);
+    disconnect(exportAction, SIGNAL(triggered()), 0, 0);
+    updateStakingIcon();
+    stakeForCharityDialog->updateMessageColor();
 }
 
 void BitcoinGUI::gotoSignMessageTab(QString addr)
@@ -969,7 +983,7 @@ void BitcoinGUI::unlockWallet()
 {
     if(!walletModel)
         return;
-    // Unlock wallet when requested by wallet model
+    // Unlock EverGreenCoin when requested by wallet model
     if(walletModel->getEncryptionStatus() == WalletModel::Locked)
     {
         AskPassphraseDialog::Mode mode = sender() == unlockWalletAction ?
@@ -978,6 +992,9 @@ void BitcoinGUI::unlockWallet()
         dlg.setModel(walletModel);
         dlg.exec();
     }
+    overviewPage->updateButton();
+    stakeForCharityDialog->updateMessageColor();
+    updateStakingIcon();
 }
 
 void BitcoinGUI::lockWallet()
@@ -986,6 +1003,9 @@ void BitcoinGUI::lockWallet()
         return;
 
     walletModel->setWalletLocked(true);
+    overviewPage->updateButton();
+    stakeForCharityDialog->updateMessageColor();
+    updateStakingIcon();
 }
 
 void BitcoinGUI::showNormalIfMinimized(bool fToggleHidden)
@@ -1045,33 +1065,33 @@ void BitcoinGUI::updateStakingIcon()
         }
 
         labelStakingIcon->setPixmap(QIcon(":/icons/staking_on").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
-        labelStakingIcon->setToolTip(tr("Earning interest<br>Your weight is %1<br>Network weight is %2<br>Estimated time to earn your next interest installment is %3").arg(nWeight).arg(nNetworkWeight).arg(text));
-        if (fGlobalStakeForCharity == true)
+        labelStakingIcon->setToolTip(tr("Earning network rewards<br>Your weight is %1<br>Network weight is %2<br>Estimated time to earn your next network reward is %3").arg(nWeight).arg(nNetworkWeight).arg(text));
+        if (fGlobalStakeForCharity && !fWalletUnlockStakingOnly)
         {
             labelCharityIcon->setPixmap(QIcon(":/icons/charity_on").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
-            labelCharityIcon->setToolTip(tr("Thank you for donating your interest installments to charity"));
+            labelCharityIcon->setToolTip(tr("Thank you for donating your network rewards to charity"));
         }
         else
         {
             labelCharityIcon->setPixmap(QIcon(":/icons/charity_off").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
-            labelCharityIcon->setToolTip(tr("You are not currently donating your interest installments to a charity"));
+            labelCharityIcon->setToolTip(tr("You are not currently donating your network rewards to a charity"));
         }
     }
     else
     {
         labelCharityIcon->setPixmap(QIcon(":/icons/charity_off").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
-        labelCharityIcon->setToolTip(tr("You are not currently donating your interest installments to a charity"));
+        labelCharityIcon->setToolTip(tr("You are not currently donating your network rewards to a charity"));
         labelStakingIcon->setPixmap(QIcon(":/icons/staking_off").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
         if (pwalletMain && pwalletMain->IsLocked())
-            labelStakingIcon->setToolTip(tr("Not earning interest because software is locked"));
+            labelStakingIcon->setToolTip(tr("Not earning network rewards because software is locked"));
         else if (vNodes.empty())
-            labelStakingIcon->setToolTip(tr("Not earning interest because software is offline"));
+            labelStakingIcon->setToolTip(tr("Not earning network rewards because software is offline"));
         else if (IsInitialBlockDownload())
-            labelStakingIcon->setToolTip(tr("Not earning interest because software is syncing"));
+            labelStakingIcon->setToolTip(tr("Not earning network rewards because software is syncing"));
         else if (!nWeight)
-            labelStakingIcon->setToolTip(tr("Not earning interest because you don't have mature EverGreenCoin"));
+            labelStakingIcon->setToolTip(tr("Not earning network rewards because you don't have mature EverGreenCoin"));
         else
-            labelStakingIcon->setToolTip(tr("Not earning interest"));
+            labelStakingIcon->setToolTip(tr("Not earning network rewards"));
     }
 }
 
@@ -1082,15 +1102,6 @@ void BitcoinGUI::charityClicked(QString addr)
 
     if(!addr.isEmpty())
         stakeForCharityDialog->setAddress(addr);
-
-    exportAction->setEnabled(false);
-    disconnect(exportAction, SIGNAL(triggered()), 0, 0);
-}
-
-void BitcoinGUI::gotoCharityPage()
-{
-    charityAction->setChecked(true);
-    centralWidget->setCurrentWidget(stakeForCharityDialog);
 
     exportAction->setEnabled(false);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);

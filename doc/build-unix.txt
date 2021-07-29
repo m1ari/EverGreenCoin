@@ -1,4 +1,5 @@
 Copyright (c) 2009-2012 Bitcoin Developers
+Copyright (c) 2015-2020 EverGreenCoin Developers
 Distributed under the MIT/X11 software license, see the accompanying
 file license.txt or http://www.opensource.org/licenses/mit-license.php.
 This product includes software developed by the OpenSSL Project for use in
@@ -6,18 +7,31 @@ the OpenSSL Toolkit (http://www.openssl.org/).  This product includes
 cryptographic software written by Eric Young (eay@cryptsoft.com) and UPnP
 software written by Thomas Bernard.
 
-
 UNIX BUILD NOTES
 ================
+
+One-liners
+----------
+Bash scripts are available to install all dependencies, download the latest code, comile it, install it, and execute it for you.
+This is based on your dicission of a CLI (daemon) or GUI (core qt) when prompted.
+To start the process, simply copy and paste the following one line into a shell terminal:
+
+Ubuntu 
+bash <(wget -qO- https://raw.githubusercontent.com/EverGreenCoinDev/EverGreenCoin/master/build-ubuntu.sh)
+
+Fedora
+bash <(wget -qO- https://raw.githubusercontent.com/EverGreenCoinDev/EverGreenCoin/master/build-fedora.sh)
 
 To Build
 --------
 
-cd src/
+git clone https://github.com/EverGreenCoinDev/EverGreenCoin/
+cd EverGreenCoin
+cd src
 make -f makefile.unix            # Headless evergreencoin
 
 See readme-qt.rst for instructions on building EverGreenCoin QT,
-the graphical evergreencoin.
+the graphical EverGreenCoin.
 
 Dependencies
 ------------
@@ -54,7 +68,7 @@ Licenses of statically linked libraries:
 
 Versions used in this release:
  GCC           4.3.3
- OpenSSL       0.9.8g
+ OpenSSL       0.9.8g (compatible up to 1.1)
  Berkeley DB   4.8.30.NC
  Boost         1.37
  miniupnpc     1.6
@@ -66,10 +80,16 @@ sudo apt-get install libssl-dev
 sudo apt-get install libdb++-dev
 sudo apt-get install libboost-all-dev
 sudo apt-get install libminiupnpc-dev
-sudo apt-get install libqrencode-dev
+sudo apt-get install libqrencode-dev (optional)
 
 If using Boost 1.37, append -mt to the boost libraries in the makefile.
 
+An Ubuntu EverGreenCoin jumpstart bash script is available. It will do everything for you.
+It will perform all the steps needed, including installing needed dependencies, 
+based on your answer of a desired CLI (Daemon) or GUI (Qt Core) EverGreenCoin wallet.
+To execute this script, from a shell terminal (CTRL + ALT + T) enter:
+bash <(wget -qO- https://raw.githubusercontent.com/EverGreenCoinDev/EverGreenCoin/master/build-ubuntu.sh)
+and follow the simple instructions.
 
 Dependency Build Instructions: Gentoo
 -------------------------------------
@@ -85,12 +105,10 @@ Take the following steps to build (no UPnP support):
  make -f makefile.unix USE_UPNP= BDB_INCLUDE_PATH='/usr/include/db4.8'
  strip evergreencoind
 
-
 Notes
 -----
 The release is built with GCC and then "strip evergreencoind" to strip the debug
-symbols, which reduces the executable size by about 90%.
-
+symbols, which reduces the executable size.
 
 miniupnpc
 ---------
@@ -100,13 +118,11 @@ make
 sudo su
 make install
 
-
 Berkeley DB
 -----------
 You need Berkeley DB 4.8.  If you have to build Berkeley DB yourself:
 ../dist/configure --enable-cxx
 make
-
 
 Boost
 -----
@@ -114,7 +130,6 @@ If you need to build Boost yourself:
 sudo su
 ./bootstrap.sh
 ./bjam install
-
 
 Security
 --------
@@ -170,3 +185,6 @@ exploit even if a vulnerability is found, you can take the following measures:
     For Debian 8, use hardening-check (see above). Output should contain:
     Stack protected: yes
 
+Support
+--------
+If at any time you need support assistance, please visit https://evergreencoin.org/support/

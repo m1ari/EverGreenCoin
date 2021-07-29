@@ -1,5 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
+// Copyright (c) 2015-2020 The EverGreenCoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -874,7 +875,7 @@ void ThreadSocketHandler2(void* parg)
 
                     if (nPos > ReceiveBufferSize()) {
                         if (!pnode->fDisconnect)
-                            printf("socket recv flood control disconnect (%"PRIszu" bytes)\n", vRecv.size());
+                            printf("socket recv flood control disconnect (%" PRIszu" bytes)\n", vRecv.size());
                         pnode->CloseSocketDisconnect();
                     }
                     else {
@@ -1019,10 +1020,14 @@ void ThreadMapPort2(void* parg)
 #ifndef UPNPDISCOVER_SUCCESS
     /* miniupnpc 1.5 */
     devlist = upnpDiscover(2000, multicastif, minissdpdpath, 0);
-#else
+#elif MINIUPNPC_API_VERSION < 14
     /* miniupnpc 1.6 */
     int error = 0;
     devlist = upnpDiscover(2000, multicastif, minissdpdpath, 0, 0, &error);
+#else
+    /* miniupnpc 1.9.20150730 */
+    int error = 0;
+    devlist = upnpDiscover(2000, multicastif, minissdpdpath, 0, 0, 2, &error);
 #endif
 
     struct UPNPUrls urls;
@@ -1134,31 +1139,7 @@ void MapPort()
 static const char *strDNSSeed[][2] = {
     {"seed.evergreencoin.org", "seed.evergreencoin.org"},
     {"seed2.evergreencoin.org", "seed2.evergreencoin.org"},
-    {"cwi-seed01.evergreencoin.org", "cwi-seed01.evergreencoin.org"},
-    {"cwi-seed02.evergreencoin.org", "cwi-seed02.evergreencoin.org"},
-    {"cwi-seed03.evergreencoin.org", "cwi-seed03.evergreencoin.org"},
-    {"cwi-seed04.evergreencoin.org", "cwi-seed04.evergreencoin.org"},
-    {"cwi-seed05.evergreencoin.org", "cwi-seed05.evergreencoin.org"},
-    {"cwi-seed06.evergreencoin.org", "cwi-seed06.evergreencoin.org"},
-    {"cwi-seed07.evergreencoin.org", "cwi-seed07.evergreencoin.org"},
-    {"cwi-seed08.evergreencoin.org", "cwi-seed08.evergreencoin.org"},
-    {"cwi-seed09.evergreencoin.org", "cwi-seed09.evergreencoin.org"},
-    {"cwi-seed10.evergreencoin.org", "cwi-seed10.evergreencoin.org"},
-    {"cwi-seed11.evergreencoin.org", "cwi-seed11.evergreencoin.org"},
-    {"cwi-seed12.evergreencoin.org", "cwi-seed12.evergreencoin.org"},
-    {"cwi-seed13.evergreencoin.org", "cwi-seed13.evergreencoin.org"},
-    {"cwi-seed14.evergreencoin.org", "cwi-seed14.evergreencoin.org"},
-    {"cwi-seed15.evergreencoin.org", "cwi-seed15.evergreencoin.org"},
-    {"cwi-seed16.evergreencoin.org", "cwi-seed16.evergreencoin.org"},
-    {"cwi-seed17.evergreencoin.org", "cwi-seed17.evergreencoin.org"},
-    {"cwi-seed18.evergreencoin.org", "cwi-seed18.evergreencoin.org"},
-    {"cwi-seed19.evergreencoin.org", "cwi-seed19.evergreencoin.org"},
-    {"cwi-seed20.evergreencoin.org", "cwi-seed20.evergreencoin.org"},
-    {"cwi-seed21.evergreencoin.org", "cwi-seed21.evergreencoin.org"},
-    {"cwi-seed22.evergreencoin.org", "cwi-seed22.evergreencoin.org"},
-    {"cwi-seed23.evergreencoin.org", "cwi-seed23.evergreencoin.org"},
-    {"cwi-seed24.evergreencoin.org", "cwi-seed24.evergreencoin.org"},
-    {"cwi-seed25.evergreencoin.org", "cwi-seed25.evergreencoin.org"},
+    {"seed3.evergreencoin.org", "seed3.evergreencoin.org"},
 };
 
 void ThreadDNSAddressSeed(void* parg)
@@ -1225,7 +1206,7 @@ void DumpAddresses()
     CAddrDB adb;
     adb.Write(addrman);
 
-    printf("Flushed %d addresses to peers.dat  %"PRId64"ms\n",
+    printf("Flushed %d addresses to peers.dat  %" PRId64"ms\n",
            addrman.size(), GetTimeMillis() - nStart);
 }
 
@@ -1851,8 +1832,8 @@ void StartNode(void* parg)
         MapPort();
 
     // Get addresses from IRC and advertise ours
-    if (!NewThread(ThreadIRCSeed, NULL))
-        printf("Error: NewThread(ThreadIRCSeed) failed\n");
+    // if (!NewThread(ThreadIRCSeed, NULL))
+    //    printf("Error: NewThread(ThreadIRCSeed) failed\n");
 
     // Send and receive from sockets, accept connections
     if (!NewThread(ThreadSocketHandler, NULL))
