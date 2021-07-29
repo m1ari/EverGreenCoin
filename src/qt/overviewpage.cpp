@@ -14,7 +14,7 @@
 #include <QPainter>
 
 #define DECORATION_SIZE 58
-#define NUM_ITEMS 7
+#define NUM_ITEMS 9
 
 class TxViewDelegate : public QAbstractItemDelegate
 {
@@ -72,7 +72,7 @@ public:
         {
             amountText = QString("[") + amountText + QString("]");
         }
-        painter->setPen(QColor(1,132,87));
+        painter->setPen(QColor(255,255,255));
         painter->drawText(amountRect, Qt::AlignRight|Qt::AlignVCenter, amountText);
 
         painter->setPen(option.palette.color(QPalette::Text));
@@ -129,7 +129,6 @@ OverviewPage::~OverviewPage()
     delete ui;
 }
 
-
 void OverviewPage::setBalance(qint64 balance, qint64 stake, qint64 unconfirmedBalance, qint64 immatureBalance)
 {
     int unit = model->getOptionsModel()->getDisplayUnit();
@@ -159,13 +158,13 @@ void OverviewPage::unlockWallet()
         dlg.setModel(model);
         if(dlg.exec() == QDialog::Accepted)
         {
-            ui->unlockWalletButton->setText(QString("Lock your EverGreenCoin"));
+            updateButton();
         }
     }
     else
     {
         model->setWalletLocked(true);
-        ui->unlockWalletButton->setText(QString("Unlock your EverGreenCoin"));
+        updateButton();
     }
 }
 
@@ -198,14 +197,15 @@ void OverviewPage::setModel(WalletModel *model)
         {
             ui->unlockWalletButton->setDisabled(true);
             ui->unlockWalletButton->setText(QString("EverGreenCoin not encrypted"));
-            ui->unlockWalletButton->setToolTip(QString("Click 'Settings' then 'Encrypt your EverGreenCoin' in the menu bar to encrypt"));
+            ui->unlockWalletButton->setToolTip(QString("Click 'Settings' then 'Encrypt your EverGreenCoin' in the menu bar to encrypt."));
         }
 
         else
         {
-            ui->unlockWalletButton->setText(QString("Unlock your EverGreenCoin"));
+            updateButton();
         }
         connect(ui->unlockWalletButton, SIGNAL(clicked()), this, SLOT(unlockWallet()));
+        connect(model, SIGNAL(walletLockChanged()), this, SLOT(updateButton()));
     }
 
     // update the display unit, to not use the default ("BTC")
@@ -228,13 +228,50 @@ void OverviewPage::updateDisplayUnit()
 
 void OverviewPage::showOutOfSyncWarning(bool fShow)
 {
+    if((ui->labelWalletStatus->isVisible() != fShow) && !fShow) // going from true to false, displayed to not
+    {   WalletModel::EncryptionStatus status = model->getEncryptionStatus();
+        if(status == WalletModel::Unencrypted)
+        {
+            ui->unlockWalletButton->setDisabled(true);
+            ui->unlockWalletButton->setText(QString("EverGreenCoin not encrypted"));
+            ui->unlockWalletButton->setToolTip(QString("Click 'Settings' then 'Encrypt your EverGreenCoin' in the menu bar to encrypt."));
+        }
+        else if(status == WalletModel::Locked)
+        {
+            ui->unlockWalletButton->setDisabled(false);
+            ui->unlockWalletButton->setText(QString("Unlock your EverGreenCoin"));
+            ui->unlockWalletButton->setToolTip(QString("Unlock and send transactions will automatically be signed without again prompting for your password until locked or closed. <br />You will be mining to earn network rewards if you have any mature balance. <br />Automatic donation of network rewards will be possible, if enabled under 'Charity'."));
+        }
+        else
+        {
+            ui->unlockWalletButton->setDisabled(false);
+            ui->unlockWalletButton->setText(QString("Lock your EverGreenCoin"));
+            ui->unlockWalletButton->setToolTip(QString("Lock and send transactions will prompt you for your passowrd. <br />You will not earn network rewards while locked and can not automatically donate them."));
+        }
+    }
     ui->labelWalletStatus->setVisible(fShow);
     ui->labelTransactionsStatus->setVisible(fShow);
+    if(fShow)
+    {
+       ui->unlockWalletButton->setDisabled(true);
+       ui->unlockWalletButton->setText(QString("Please wait and allow full sync"));
+       ui->unlockWalletButton->setToolTip(QString("Full network synchronization can take a long time. <br />Please allow this software to run as often as possible and finish the process."));
+    }
 }
 
 void OverviewPage::updateButton()
 {
    WalletModel::EncryptionStatus status = model->getEncryptionStatus();
-   if (status == WalletModel::Locked) ui->unlockWalletButton->setText(QString("Unlock your EverGreenCoin"));
-   else ui->unlockWalletButton->setText(QString("Lock your EverGreenCoin"));
+   if(status == WalletModel::Locked)
+   {
+       ui->unlockWalletButton->setDisabled(false);
+       ui->unlockWalletButton->setText(QString("Unlock your EverGreenCoin"));
+       ui->unlockWalletButton->setToolTip(QString("Unlock and send transactions will automatically be signed without again prompting for your password until locked or closed. <br />You will be mining to earn network rewards if you have any mature balance. <br />Automatic donation of network rewards will be possible, if enabled under 'Charity'."));
+   }
+   else
+   {
+       ui->unlockWalletButton->setDisabled(false);
+       ui->unlockWalletButton->setText(QString("Lock your EverGreenCoin"));
+       ui->unlockWalletButton->setToolTip(QString("Lock and send transactions will prompt you for your passowrd. <br />You will not earn network rewards while locked and can not automatically donate them."));
+   }
 }

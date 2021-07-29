@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2012 The Bitcoin developers
 // Copyright (c) 2014-2016 The MaiaCoin developers
-// Copyright (c) 2015-2017 The EverGreenCoin developers
+// Copyright (c) 2015-2020 The EverGreenCoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -51,7 +51,13 @@ namespace Checkpoints
         (999095, uint256("0x2e55e4af01c9801016890463861d6c9763fbe2f6dd29cbd333a51c1fc3acbe04"))
        (1022656, uint256("0x7976a5d68708978fbee7bc67e20e4f6627f4f80415d24123abbeaa7822fa6826"))
        (1025892, uint256("0x890d5d285469dd763cb2a578198727321e57a11209637ce9a180615506ef4aa7"))
-    ;
+       (1128000, uint256("0x67570526f24381855c51c61337c5587c59fdd9b214e0222a16c3f8e21fd0f128"))
+       (1160893, uint256("0x42585ed3da0759b22be36b1f1a7c74228a36f2ea7b3b673f05fcc4014dc695c1"))
+       (1198185, uint256("0xb11e6ca05c1a952c22eee231ae90bb0f7b47001d74f197762ea46c1e90b96853"))
+       (1239159, uint256("0x82f18183ace4ab4764d144cf02e14603da66ea1585fde262badd705798bef416"))
+       (1291639, uint256("0xc979b0d5b8225de6a45ae39a14251e880d0c200b735d385777b83209d14ad623"))
+       (1308562, uint256("0xd8734f6b5faec29b9779b124c6fd22e7d69be8b6b49fa2b2a883a501003c41ce"))
+       (1470991, uint256("0xa141e46f4df0cecd52d7232a67b633b86789bbe8a48595b4f02e3086ba8ea16e"));
 
     // TestNet has no checkpoints
     static MapCheckpoints mapCheckpointsTestnet =

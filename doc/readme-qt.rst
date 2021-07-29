@@ -26,20 +26,7 @@ then execute the following:
 
 Alternatively, install Qt Creator and open the `EverGreenCoin-Qt.pro` file.
 
-An executable named `EverGreenCoin-Qt` will be built.
-
-Error: invalid use of incomplete type ‘BIGNUM {aka struct bignum_st}’
-
-Because of incompatibilities with openssl v1.1 still yet removed, users of newer distrobustions may encounter errors related to the BIGNUM (CBigNum) data type. 
-
-Installing openssl v1.0 will resolve this:
-
-::
-
-    sudo apt-get install openssl1.0 openssl1.0-dev
-    
-Work will continue to make the code compatible with openssl v1.1 as soon as possible. The changes are very considerable, as many of the functions and data constructors were changed in openssl v1.1.    
-
+An executable named `EverGreenCoin-Qt` will be built.  
 
 Windows
 --------
@@ -160,3 +147,27 @@ disable screen reader functionality for Qt apps:
     sudo apt-get remove qt-at-spi
 
 .. _`launchpad bug 857790`: https://bugs.launchpad.net/ubuntu/+source/qt-at-spi/+bug/857790
+
+
+Ubuntu bash jumpstart
+=====================
+
+A jumpstart bash script is available. It will take an Ubuntu machine through all the steps for you, based on your answer 
+of wanting a GUI (Qt Core) or CLI (Daemon) EverGreenCoin wallet. 
+To execute the bash script, copy the following in a terminal:
+
+::
+
+    bash <(wget -qO- https://raw.githubusercontent.com/EverGreenCoinDev/EverGreenCoin/master/build-ubuntu.sh)
+
+Fedora bash jumpstart
+=====================
+
+A jumpstart bash script is available. It will take a Fedora machine through all the steps for you, based on your answer 
+of wanting a GUI (Qt Core) or CLI (Daemon) EverGreenCoin wallet. 
+To execute the bash script, copy the following in a terminal:
+
+::
+
+    bash <(wget -qO- https://raw.githubusercontent.com/EverGreenCoinDev/EverGreenCoin/master/build-fedora.sh)
+
