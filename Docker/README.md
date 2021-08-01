@@ -69,8 +69,6 @@ docker container attach tmpegc
 
 Inside the docker container we install some extra bits and extract the snapshot. Anything outside /var/lib/evergreencoin will be lost once we exit the bash container.
 ```
-apt update
-apt install xz-utils
 cd /var/lib/evergreencoin
 tar xJvf /tmp/<snapshot>.tar.xz
 chown -R 999:999 blk0001.dat database/ txleveldb/

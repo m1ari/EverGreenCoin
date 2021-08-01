@@ -86,6 +86,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	libminiupnpc17 \
 	libssl1.1 \
 	logrotate \
+	xz-utils \
 	&& rm -rf /var/lib/apt/lists/*
 
 COPY --from=builder /usr/local/bin /usr/local/bin
