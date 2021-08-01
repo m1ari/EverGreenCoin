@@ -19,7 +19,7 @@ Sets up the runtime image.
 ## Build Steps
 
 Before building you need to add the Berkley DB source tarball to the current directory. This can be done with
-```
+```bash
 wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz
 ```
 
@@ -27,14 +27,14 @@ Released images are tagged with the EGC version (v1.9.1.0) and an incrementing r
 
 
 Building can be achieved with
-```
+```bash
 docker build -t evergreencoin:v1.9.1.0-01 .
 ```
 
 ## Pushing release Images
 
 If this is good extra tags can be added and pushed to dockerhub
-```
+```bash
 docker tag evergreencoin:v1.9.1.0-01 m1ari/evergreencoin:v1.9.1.0-01 
 docker tag evergreencoin:v1.9.1.0-01 m1ari/evergreencoin:latest
 docker push m1ari/evergreencoin:v1.9.1.0-01 
@@ -55,20 +55,20 @@ The blockchain and wallet will be stored within the volume meaning the container
 First you will need to download a recent snapshot to your local machine.
 
 You can optionally create the volume manually, however this should be done upon starting the first container.
-```
+```bash
 docker volume create evergreencoin
 ```
 This process is a bit more involved as we need to copy the snapshot into the image and extract it before starting the evergreencoin daemon.
 
 Firstly we will create a container and start it running bash in a detatched state. We then copy in the snapshot file and attach to the running bash session
-```
+```bash
 docker run -dt --rm --name=tmpegc -v evergreencoin:/var/lib/evergreencoin --entrypoint=bash evergreencoin
 docker container cp <snapshot> tmpegc:/tmp
 docker container attach tmpegc
 ```
 
 Inside the docker container we install some extra bits and extract the snapshot. Anything outside /var/lib/evergreencoin will be lost once we exit the bash container.
-```
+```bash
 cd /var/lib/evergreencoin
 tar xJvf /tmp/<snapshot>.tar.xz
 chown -R 999:999 blk0001.dat database/ txleveldb/
@@ -77,20 +77,23 @@ exit
 Before exiting you can additionally make any extra changes you might wish to the evergreencoin.conf file
 
 Finally you can start up a new production container
-```
+```bash
 docker run -dt -p 5757:5757 --name=evergreencoin -v evergreencoin:/var/lib/evergreencoin evergreencoin:latest
 
 ```
 
 # TODO
-[ ] Use a script as the entry point (this should be able to accept parameters to mimic evergreencoid if it's already running)
-[ ] Create random RPC password for each new install `openssl rand -base64 12`
-[ ] Auto download a blockchain snapshot
-[ ] Setup cron for logrotate
-[ ] Add a healthcheck command
+- [ ] Use a script as the entry point (this should be able to accept parameters to mimic evergreencoid if it's already running)
+- [ ] Create random RPC password for each new install `openssl rand -base64 12`
+- [ ] Auto download a blockchain snapshot
+- [ ] Setup cron for logrotate
+- [ ] Add a healthcheck command
 
 # Changelog
-v1.9.1.0-01	20210728	Initial Release
+| Tag         | Date     | Notes                 |
+|-------------|----------|-----------------------|
+| v1.9.1.0-01 | 20210728 | Initial Release       |
+| v1.9.1.0-02 | 20210801 | (Not Released) Added xz-utils package to image |
 
 
 # Other Notes
