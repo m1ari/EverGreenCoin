@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Builder image to build the bits we need - This can be removed later
 FROM base as builder
 ARG TERM=xterm
-ARG EGC_VERSION=v1.9.1.0
+ARG EGC_VERSION=v1.9.2.0
 ARG BDB_VERSION=db-4.8.30.NC
 ARG BUILD_BASE=/home/evergreencoin
 # TODO we might only need some of the libboost libs but this is easier and temporary

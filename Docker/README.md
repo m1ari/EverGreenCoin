@@ -93,7 +93,8 @@ docker run -dt -p 5757:5757 --name=evergreencoin -v evergreencoin:/var/lib/everg
 | Tag         | Date     | Notes                 |
 |-------------|----------|-----------------------|
 | v1.9.1.0-01 | 20210728 | Initial Release       |
-| v1.9.1.0-02 | 20210801 | (Not Released) Added xz-utils package to image |
+| v1.9.1.0-02 | 20210802 | Added xz-utils package to image |
+| v1.9.2.0-03 | 20210802 | Update to 1.9.2.0     |
 
 
 # Other Notes
