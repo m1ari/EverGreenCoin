@@ -86,6 +86,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	libminiupnpc17 \
 	libssl1.1 \
 	logrotate \
+	nano-tiny \
+	vim-tiny \
 	xz-utils \
 	&& rm -rf /var/lib/apt/lists/*
 
