@@ -2,8 +2,9 @@
 # This is based on Debian 10 and will compile against Berkley DB 4.8
 
 # Common base with things we always need
-ARG DEBIAN_VER=10
-FROM debian:${DEBIAN_VER} AS base
+ARG DIST=debian
+ARG DIST_VER=16.04
+FROM ${DIST}:${DIST_VER} AS base
 ARG TERM=xterm
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -15,8 +16,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Builder image to build the bits we need - This can be removed later
 FROM base as builder
 ARG TERM=xterm
-ARG EGC_VERSION=v1.9.2.0
-ARG BDB_VERSION=db-4.8.30.NC
 ARG BUILD_BASE=/home/evergreencoin
 # TODO we might only need some of the libboost libs but this is easier and temporary
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -31,6 +30,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	&& rm -rf /var/lib/apt/lists/*
 
 # Add the Berkly DB source
+ARG BDB_VERSION=db-4.8.30.NC
 WORKDIR ${BUILD_BASE}
 ADD ${BDB_VERSION}.tar.gz ${BUILD_BASE}/
 
@@ -48,6 +48,7 @@ RUN make
 RUN make install
 
 # Get the EverGreenCoin Sources
+ARG EGC_VERSION=v1.9.2.0
 WORKDIR ${BUILD_BASE}
 RUN git clone https://github.com/EverGreenCoinDev/EverGreenCoin.git --branch ${EGC_VERSION} --single-branch
 

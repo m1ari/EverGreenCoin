@@ -82,6 +82,28 @@ docker run -dt -p 5757:5757 --name=evergreencoin -v evergreencoin:/var/lib/everg
 
 ```
 
+# Test Builds
+This docker helps with testing builds against differing versions of EverGreenCoin and Debian and other flavours such as Ubuntu. These can be changed via build flags.
+
+For instance to Build using Ubuntu 16.04 against the V1.9.2.0 EGC Tag (which fails with a compile error)
+```bash
+docker build -t egc:ubuntu-20.10-192 --target builder --build-arg DIST=ubuntu --build-arg DIST_VER=16.04 --build-arg EGC_VERSION=v1.9.2.0 .
+```
+
+But a similar build against v1.9.1.0 will work
+```bash
+docker build -t egc:ubuntu-20.10-191 --target builder --build-arg DIST=ubuntu --build-arg DIST_VER=16.04 --build-arg EGC_VERSION=v1.9.1.0 .
+```
+
+The Tag `-t egc:ubuntu-<distver>-<egcver>` is optional but helps identify unique builds. It's advised to use the `--target builder` flag as this means the final deployable image is skipped. This final stage is likely to fail as it specifies specific versions of some libraries.
+
+The Following build Arguments can be set to control the build. BDB_VERSION and EGC_VERSION take effect during the builder stage, BOOST_VER only takes effect for the final deployable image stage
+* ARG DIST=debian
+* ARG DIST_VER=16.04
+* ARG BDB_VERSION=db-4.8.30.NC
+* ARG EGC_VERSION=v1.9.2.0
+* ARG BOOST_VER=1.67
+
 # TODO
 - [ ] Use a script as the entry point (this should be able to accept parameters to mimic evergreencoid if it's already running)
 - [ ] Create random RPC password for each new install `openssl rand -base64 12`
