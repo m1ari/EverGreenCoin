@@ -4,6 +4,8 @@ This will build a container based on Debian 10 (Buster) that will run the EverGr
 
 The Wallet and blockchain are stored in a dedicated volume allowing for easy image upgrades.
 
+Issues related to this Docker build should be raised on GitHub: https://github.com/m1ari/EverGreenCoin/issues This issue tracker shouldn't be used for more general EverGreenCoin issues
+
 # Building
 ## Build Stages
 This Dockerfile uses three stages
@@ -87,12 +89,12 @@ This docker helps with testing builds against differing versions of EverGreenCoi
 
 For instance to Build using Ubuntu 16.04 against the V1.9.2.0 EGC Tag (which fails with a compile error)
 ```bash
-docker build -t egc:ubuntu-20.10-192 --target builder --build-arg DIST=ubuntu --build-arg DIST_VER=16.04 --build-arg EGC_VERSION=v1.9.2.0 .
+docker build -t egc:ubuntu-1604-192 --target builder --build-arg DIST=ubuntu --build-arg DIST_VER=16.04 --build-arg EGC_VERSION=v1.9.2.0 .
 ```
 
 But a similar build against v1.9.1.0 will work
 ```bash
-docker build -t egc:ubuntu-20.10-191 --target builder --build-arg DIST=ubuntu --build-arg DIST_VER=16.04 --build-arg EGC_VERSION=v1.9.1.0 .
+docker build -t egc:ubuntu-1604-191 --target builder --build-arg DIST=ubuntu --build-arg DIST_VER=16.04 --build-arg EGC_VERSION=v1.9.1.0 .
 ```
 
 The Tag `-t egc:ubuntu-<distver>-<egcver>` is optional but helps identify unique builds. It's advised to use the `--target builder` flag as this means the final deployable image is skipped. This final stage is likely to fail as it specifies specific versions of some libraries.
