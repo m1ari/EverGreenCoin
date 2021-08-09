@@ -88,6 +88,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	libssl1.1 \
 	logrotate \
 	nano-tiny \
+	psmisc \
 	vim-tiny \
 	xz-utils \
 	&& rm -rf /var/lib/apt/lists/*

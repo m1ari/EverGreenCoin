@@ -119,7 +119,7 @@ The Following build Arguments can be set to control the build. BDB_VERSION and E
 | v1.9.1.0-01 | 20210728 | Initial Release       |
 | v1.9.1.0-02 | 20210802 | Added xz-utils package to image |
 | v1.9.2.0-03 | 20210802 | Update to 1.9.2.0     |
-
+| v1.9.2.0-04 | 20210809 | Add psmisc so logrotate can work |
 
 # Other Notes
 
