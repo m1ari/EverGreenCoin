@@ -3,7 +3,7 @@
 
 # Common base with things we always need
 ARG DIST=debian
-ARG DIST_VER=16.04
+ARG DIST_VER=10
 FROM ${DIST}:${DIST_VER} AS base
 ARG TERM=xterm
 
