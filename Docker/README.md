@@ -1,6 +1,6 @@
 # Docker Image creation for EverGreenCoin
 
-This will build a container based on Debian 10 (Buster) that will run the EverGreenCoin daemon using the current git release (v1.9.1.0). This is built against Berkley DB 4.8 to maintain compatability with other standard wallets.
+This will build a container based on Debian 11 (Bullseye) that will run the EverGreenCoin daemon using the current git release (v1.9.5.2). This is built against Berkley DB 4.8 to maintain compatability with other standard wallets.
 
 The Wallet and blockchain are stored in a dedicated volume allowing for easy image upgrades.
 
@@ -25,21 +25,21 @@ Before building you need to add the Berkley DB source tarball to the current dir
 wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz
 ```
 
-Released images are tagged with the EGC version (v1.9.1.0) and an incrementing release number which can be linked to a version of these files. Additionally the latest stable release will also be tagged as latest.
+Released images are tagged with the EGC version (v1.9.5.2) and an incrementing release number which can be linked to a version of these files. Additionally the latest stable release will also be tagged as latest.
 
 
 Building can be achieved with
 ```bash
-docker build -t evergreencoin:v1.9.1.0-01 .
+docker build -t evergreencoin:v1.9.5.2-05 .
 ```
 
 ## Pushing release Images
 
 If this is good extra tags can be added and pushed to dockerhub
 ```bash
-docker tag evergreencoin:v1.9.1.0-01 m1ari/evergreencoin:v1.9.1.0-01 
-docker tag evergreencoin:v1.9.1.0-01 m1ari/evergreencoin:latest
-docker push m1ari/evergreencoin:v1.9.1.0-01 
+docker tag evergreencoin:v1.9.5.2-05 m1ari/evergreencoin:v1.9.5.2-05
+docker tag evergreencoin:v1.9.5.2-05 m1ari/evergreencoin:latest
+docker push m1ari/evergreencoin:v1.9.5.2-05
 docker push m1ari/evergreencoin:latest
 ```
 
@@ -120,6 +120,7 @@ The Following build Arguments can be set to control the build. BDB_VERSION and E
 | v1.9.1.0-02 | 20210802 | Added xz-utils package to image |
 | v1.9.2.0-03 | 20210802 | Update to 1.9.2.0     |
 | v1.9.2.0-04 | 20210809 | Add psmisc so logrotate can work |
+| v1.9.5.0-05 | 20220411 | Update to 1.9.5.2 with Debian 11 |
 
 # Other Notes
 

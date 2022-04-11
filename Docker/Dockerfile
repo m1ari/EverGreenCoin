@@ -1,9 +1,9 @@
 # Docker file for an EverGreenCoin node
-# This is based on Debian 10 and will compile against Berkley DB 4.8
+# This is based on Debian 11 and will compile against Berkley DB 4.8
 
 # Common base with things we always need
 ARG DIST=debian
-ARG DIST_VER=10
+ARG DIST_VER=11
 FROM ${DIST}:${DIST_VER} AS base
 ARG TERM=xterm
 
@@ -48,7 +48,7 @@ RUN make
 RUN make install
 
 # Get the EverGreenCoin Sources
-ARG EGC_VERSION=v1.9.2.0
+ARG EGC_VERSION=v1.9.5.2
 WORKDIR ${BUILD_BASE}
 RUN git clone https://github.com/EverGreenCoinDev/EverGreenCoin.git --branch ${EGC_VERSION} --single-branch
 
@@ -64,7 +64,7 @@ RUN strip /usr/local/bin/evergreencoind
 
 FROM base as evergreencoin
 ARG TERM=xterm
-ARG BOOST_VER=1.67
+ARG BOOST_VER=1.74
 ARG DATADIR=/var/lib/evergreencoin
 
 LABEL maintainer="Mike Axford <mfaxford@gmail.com>"
