@@ -90,9 +90,9 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 #endif
 
-    resize(1000, 700);
+    resize(937.5, 750);
     this->setGeometry(QStyle::alignedRect(Qt::LeftToRight, Qt::AlignCenter, this->size(), QApplication::desktop()->screenGeometry()));
-    setWindowTitle(tr("EverGreenCoin® Wallet v1.9.2") );
+    setWindowTitle(tr("EverGreenCoin® Core - Wallet v1.9.5") );
 #ifndef Q_OS_MAC
     qApp->setWindowIcon(QIcon(":icons/evergreencoin"));
     setWindowIcon(QIcon(":icons/evergreencoin"));
@@ -167,7 +167,6 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     frameBlocks->setContentsMargins(0,0,0,0);
     frameBlocks->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
     frameBlocks->setFrameStyle(QFrame::NoFrame);
-    //frameBlocks->setFrameStyle(QFrame::StyledPanel);
     frameBlocks->setFrameShadow(QFrame::Plain);
     QHBoxLayout *frameBlocksLayout = new QHBoxLayout(frameBlocks);
     frameBlocksLayout->setContentsMargins(3,0,3,0);
@@ -200,7 +199,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     // Progress bar and label for blocks download
     progressBarLabel = new QLabel();
     progressBarLabel->setVisible(false);
-    progressBarLabel->setStyleSheet("color: #ffffff;");
+    progressBarLabel->setStyleSheet("color: #000000;");
     progressBar = new QProgressBar();
     progressBar->setAlignment(Qt::AlignCenter);
     progressBar->setVisible(false);
@@ -259,19 +258,19 @@ void BitcoinGUI::createActions()
     tabGroup->addAction(overviewAction);
 
     sendCoinsAction = new QAction(QIcon(":/icons/send"), tr("&Send"), this);
-    sendCoinsAction->setToolTip(tr("Send to an EverGreenCoin account address"));
+    sendCoinsAction->setToolTip(tr("Send to an EverGreenCoin address"));
     sendCoinsAction->setCheckable(true);
     sendCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_3));
     tabGroup->addAction(sendCoinsAction);
 
     receiveCoinsAction = new QAction(QIcon(":/icons/receiving_addresses"), tr("&Receive"), this);
-    receiveCoinsAction->setToolTip(tr("Show your list of EverGreenCoin account addresses for receiving EverGreenCoin"));
+    receiveCoinsAction->setToolTip(tr("Show your list of EverGreenCoin addresses for receiving EverGreenCoin"));
     receiveCoinsAction->setCheckable(true);
     receiveCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_2));
     tabGroup->addAction(receiveCoinsAction);
 
     charityAction = new QAction(QIcon(":/icons/charity_off"), tr("&Charity"), this);
-    charityAction->setToolTip(tr("Stake your EverGreenCoin for a charity of your choice"));
+    charityAction->setToolTip(tr("Stake your EverGreenCoin for an EverGreenCoin Authorized Effort™ or address of your choice"));
     charityAction->setCheckable(true);
     charityAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_4));
     tabGroup->addAction(charityAction);
@@ -283,13 +282,13 @@ void BitcoinGUI::createActions()
     tabGroup->addAction(historyAction);
 
     addressBookAction = new QAction(QIcon(":/icons/address-book"), tr("&Addresses"), this);
-    addressBookAction->setToolTip(tr("Edit the list of your stored EverGreenCoin account addresses and labels"));
+    addressBookAction->setToolTip(tr("Edit the list of your stored EverGreenCoin addresses and labels"));
     addressBookAction->setCheckable(true);
     addressBookAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
     tabGroup->addAction(addressBookAction);
 
     blockAction = new QAction(QIcon(":/icons/block"), tr("&Explorer"), this);
-    blockAction->setToolTip(tr("Explore the EverGreenCoin blockchain"));
+    blockAction->setToolTip(tr("Explore your copy of the EverGreenCoin blockchain"));
     blockAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_7));
     blockAction->setCheckable(true);
     tabGroup->addAction(blockAction);
@@ -435,7 +434,7 @@ void BitcoinGUI::setClientModel(ClientModel *clientModel)
 #endif
             if(trayIcon)
             {
-                trayIcon->setToolTip(tr("EverGreenCoin® Wallet") + QString(" ") + tr("[testnet]"));
+                trayIcon->setToolTip(tr("EverGreenCoin® Core - Wallet v1.9.5") + QString(" ") + tr("[testnet]"));
                 trayIcon->setIcon(QIcon(":/icons/toolbar_testnet"));
                 toggleHideAction->setIcon(QIcon(":/icons/toolbar_testnet"));
             }
@@ -527,7 +526,7 @@ void BitcoinGUI::createTrayIcon()
     trayIconMenu->addAction(quitAction);
 #endif
 
-    notificator = new Notificator(qApp->applicationName(), trayIcon);
+    notificator = new Notificator(qApp->applicationName(), trayIcon, this);
 }
 
 #ifndef Q_OS_MAC
@@ -563,13 +562,14 @@ void BitcoinGUI::setNumConnections(int count)
     switch(count)
     {
     case 0: icon = ":/icons/connect_0"; break;
-    case 1: case 2: case 3: icon = ":/icons/connect_1"; break;
-    case 4: case 5: case 6: icon = ":/icons/connect_2"; break;
-    case 7: case 8: case 9: icon = ":/icons/connect_3"; break;
+    case 1: case 2: case 3: case 4: icon = ":/icons/connect_1"; break;
+    case 5: case 6: case 7: icon = ":/icons/connect_2"; break;
+    case 8: case 9: case 10: icon = ":/icons/connect_3"; break;
     default: icon = ":/icons/connect_4"; break;
     }
     labelConnectionsIcon->setPixmap(QIcon(icon).pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
     labelConnectionsIcon->setToolTip(tr("%n active connection(s) to the EverGreenCoin network", "", count));
+    overviewPage->peerCountSafety(count);
 }
 
 void BitcoinGUI::setNumBlocks(int count, int nTotalBlocks)
@@ -776,7 +776,6 @@ void BitcoinGUI::gotoOverviewPage()
     exportAction->setEnabled(false);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
     updateStakingIcon();
-    if(overviewPage->isVisible()) overviewPage->updateButton();
 }
 
 void BitcoinGUI::gotoBlockBrowser()
@@ -1105,4 +1104,17 @@ void BitcoinGUI::charityClicked(QString addr)
 
     exportAction->setEnabled(false);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
+}
+
+void BitcoinGUI::resizeEvent(QResizeEvent* evt)
+{
+    QPixmap bkgnd(":/images/background");
+    bkgnd = bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+
+    QPalette palette;
+
+    palette.setBrush(QPalette::Background, bkgnd);
+    this->setPalette(palette);
+
+    QMainWindow::resizeEvent(evt); // call inherited implementation
 }
