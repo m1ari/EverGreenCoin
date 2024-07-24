@@ -5,6 +5,7 @@
 ARG DIST=debian
 ARG DIST_VER=11
 ARG BOOST_VER=1.74
+ARG EGC_VERSION=v1.9.5.2
 
 FROM ${DIST}:${DIST_VER} AS base
 ARG TERM=xterm
@@ -52,7 +53,7 @@ RUN make
 RUN make install
 
 # Get the EverGreenCoin Sources
-ARG EGC_VERSION=v1.9.5.2
+ARG EGC_VERSION
 WORKDIR ${BUILD_BASE}
 RUN git clone https://github.com/EverGreenCoinDev/EverGreenCoin.git --branch ${EGC_VERSION} --single-branch
 
