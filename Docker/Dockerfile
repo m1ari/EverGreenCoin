@@ -4,8 +4,11 @@
 # Common base with things we always need
 ARG DIST=debian
 ARG DIST_VER=11
+ARG BOOST_VER=1.74
+
 FROM ${DIST}:${DIST_VER} AS base
 ARG TERM=xterm
+ENV TZ=Etc/UTC
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
 	apt-utils \
@@ -14,9 +17,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	&& rm -rf /var/lib/apt/lists/*
 
 # Builder image to build the bits we need - This can be removed later
-FROM base as builder
+FROM base AS builder
 ARG TERM=xterm
 ARG BUILD_BASE=/home/evergreencoin
+ARG DEBIAN_FRONTEND=noninteractive
 # TODO we might only need some of the libboost libs but this is easier and temporary
 RUN apt-get update && apt-get install -y --no-install-recommends \
 	build-essential \
@@ -62,13 +66,13 @@ RUN cp evergreencoind /usr/local/bin/
 # Strip
 RUN strip /usr/local/bin/evergreencoind
 
-FROM base as evergreencoin
+FROM base AS evergreencoin
 ARG TERM=xterm
-ARG BOOST_VER=1.74
+ARG BOOST_VER
 ARG DATADIR=/var/lib/evergreencoin
 
 LABEL maintainer="Mike Axford <mfaxford@gmail.com>"
-ENV LANG C.UTF-8
+ENV LANG=C.UTF-8
 
 # Create User
 RUN useradd -r -c "EverGreenCoin Wallet Daemon" -d ${DATADIR} -s /usr/sbin/nologin evergreencoin \
