@@ -1,14 +1,16 @@
 # Docker file for an EverGreenCoin node
-# This is based on Debian 11 and will compile against Berkley DB 4.8
+# This is based on Debian 12 (bookworm) and will compile against Berkley DB 4.8
 
 # Common base with things we always need
 ARG DIST=debian
-ARG DIST_VER=11
+ARG DIST_VER=12
 ARG BOOST_VER=1.74
-ARG EGC_VERSION=v1.9.5.2
+#ARG EGC_VERSION=v1.9.5.2
+ARG EGC_VERSION=master
+ARG TERM=xterm
 
 FROM ${DIST}:${DIST_VER} AS base
-ARG TERM=xterm
+ARG TERM
 ENV TZ=Etc/UTC
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -19,7 +21,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Builder image to build the bits we need - This can be removed later
 FROM base AS builder
-ARG TERM=xterm
+ARG TERM
 ARG BUILD_BASE=/home/evergreencoin
 ARG DEBIAN_FRONTEND=noninteractive
 # TODO we might only need some of the libboost libs but this is easier and temporary
@@ -55,7 +57,7 @@ RUN make install
 # Get the EverGreenCoin Sources
 ARG EGC_VERSION
 WORKDIR ${BUILD_BASE}
-RUN git clone https://github.com/EverGreenCoinDev/EverGreenCoin.git --branch ${EGC_VERSION} --single-branch
+RUN git clone https://github.com/EverGreenCoinDev/EverGreenCoin.git --branch ${EGC_VERSION}
 
 # Build and Install
 WORKDIR ${BUILD_BASE}/EverGreenCoin/src
@@ -68,7 +70,7 @@ RUN cp evergreencoind /usr/local/bin/
 RUN strip /usr/local/bin/evergreencoind
 
 FROM base AS evergreencoin
-ARG TERM=xterm
+ARG TERM
 ARG BOOST_VER
 ARG DATADIR=/var/lib/evergreencoin
 
@@ -90,7 +92,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	libboost-chrono${BOOST_VER} \
 	libboost-date-time${BOOST_VER} \
 	libminiupnpc17 \
-	libssl1.1 \
+	libssl3 \
 	logrotate \
 	nano-tiny \
 	psmisc \
@@ -126,6 +128,7 @@ WORKDIR ${DATADIR}
 #HEALTHCHECK --interval=5m --timeout=10s CMD ["evergreencoind", "-datadir=${DATADIR}", "getinfo", "|| exit 1"]
 
 # TODO Have ENTRYPOINT use a script that can do some initial setup (set RPC User/Password etc)
+# TODO use the DATADIR ARG rather than hard coding here
 ENTRYPOINT ["evergreencoind", "-datadir=/var/lib/evergreencoin"]
 #CMD
 # Set an RPC Password if not specified

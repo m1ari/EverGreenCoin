@@ -1,22 +1,24 @@
 # Docker Image creation for EverGreenCoin
 
-This will build a container based on Debian 11 (Bullseye) that will run the EverGreenCoin daemon using the current git release (v1.9.5.2). This is built against Berkley DB 4.8 to maintain compatability with other standard wallets.
+This will build a container based on Debian 12 (Bookworm) that will run the EverGreenCoin daemon using the current git release (~~v1.9.5.2~~ master). This is built against Berkley DB 4.8 to maintain compatability with other standard wallets.
 
 The Wallet and blockchain are stored in a dedicated volume allowing for easy image upgrades.
 
 Issues related to this Docker build should be raised on GitHub: https://github.com/m1ari/EverGreenCoin/issues This issue tracker shouldn't be used for more general EverGreenCoin issues
 
+**NB:** For compatability with the latest debian/ubuntu versions we need to include updates made after V1.9.5.2. This means that the built version may not be consistent and the reported version may not be accurate.
+
 # Building
 ## Build Stages
 This Dockerfile uses three stages
 * base
-builds on debian:10 and installs a couple of things to help in all other stages
+builds on debian:12 and installs package and configuration required in all other stages
 
 * builder
 Sets up a build environment and compiles and installs Berkley DB 4.8 as well as EverGreenCoin
 
 * evergreencoin
-Sets up the runtime image.
+Sets up the runtime image using binaries built in the previous stage
 
 ## Build Steps
 
@@ -25,21 +27,25 @@ Before building you need to add the Berkley DB source tarball to the current dir
 wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz
 ```
 
-Released images are tagged with the EGC version (v1.9.5.2) and an incrementing release number which can be linked to a version of these files. Additionally the latest stable release will also be tagged as latest.
-
+Released images are now tagged with the underlying userspace (deb12), EGC version (v1.9.5.2), and build time (previously there was only an incrementing number). Additionally the latest stable debian release will also be tagged as latest.
 
 Building can be achieved with
 ```bash
-docker build -t evergreencoin:v1.9.5.2-05 .
+docker build -t evergreencoin:deb12-v1.9.5.2-$(date +%Y%m%d-%H%M) --progress plain .
+```
+
+Alternatively to use the same Dockerfile to build on an Ubuntu 24.04 LTS (Noble Numbat) image you can use
+```bash
+docker build --build-arg DIST=ubuntu --build-arg DIST_VER=24.04 -t evergreencoin:ubuntu2404-v1.9.5.2-$(date +%Y%m%d-%H%M) --progress plain .
 ```
 
 ## Pushing release Images
 
 If this is good extra tags can be added and pushed to dockerhub
 ```bash
-docker tag evergreencoin:v1.9.5.2-05 m1ari/evergreencoin:v1.9.5.2-05
-docker tag evergreencoin:v1.9.5.2-05 m1ari/evergreencoin:latest
-docker push m1ari/evergreencoin:v1.9.5.2-05
+docker tag evergreencoin:deb12-master-20240723-1955 m1ari/evergreencoin:deb12-master-20240723-1955
+docker tag evergreencoin:deb12-master-20240723-1955 m1ari/evergreencoin:latest
+docker push m1ari/evergreencoin:deb12-master-20240723-1955
 docker push m1ari/evergreencoin:latest
 ```
 
@@ -104,7 +110,7 @@ The Following build Arguments can be set to control the build. BDB_VERSION and E
 * ARG DIST_VER=16.04
 * ARG BDB_VERSION=db-4.8.30.NC
 * ARG EGC_VERSION=v1.9.2.0
-* ARG BOOST_VER=1.67
+* ARG BOOST_VER=1.74
 
 # TODO
 - [ ] Use a script as the entry point (this should be able to accept parameters to mimic evergreencoid if it's already running)
@@ -121,6 +127,9 @@ The Following build Arguments can be set to control the build. BDB_VERSION and E
 | v1.9.2.0-03 | 20210802 | Update to 1.9.2.0     |
 | v1.9.2.0-04 | 20210809 | Add psmisc so logrotate can work |
 | v1.9.5.0-05 | 20220411 | Update to 1.9.5.2 with Debian 11 |
+| v1.9.5.0-bullseye-01 | 20240317 | Update to Debian 12 and add debian release in tag |
+| deb12-master-20240723-1955 | 2024-07-23 | Updated to Debian 12 and master branch |
+| ubuntu2404-master-20240723-2023 | 2024-07-23 | Ubuntu 24.04 version to match above deb12 release |
 
 # Other Notes
 
