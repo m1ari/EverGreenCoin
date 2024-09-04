@@ -1,6 +1,6 @@
 # Docker Image creation for EverGreenCoin
 
-This will build a container based on Debian 12 (Bookworm) that will run the EverGreenCoin daemon using the current git release (~~v1.9.5.2~~ master). This is built against Berkley DB 4.8 to maintain compatability with other standard wallets.
+This will build a container based on Debian 12 (Bookworm) that will run the EverGreenCoin daemon using the current git release (v1.9.6.1 ). This is built against Berkley DB 4.8 to maintain compatability with other standard wallets.
 
 The Wallet and blockchain are stored in a dedicated volume allowing for easy image upgrades.
 
